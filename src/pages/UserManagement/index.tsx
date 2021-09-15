@@ -5,6 +5,15 @@ import { Account } from "../../apis/Entities/Account";
 function UserManagement() {
     const [account, setAccount] = useState<Account>();
 
+    const accountId = 4;
+// just checking if backend is connected to frontend
+    useEffect(() => {
+     getMyAccount(accountId).then(receivedAccount => {
+        setAccount(receivedAccount)
+    });
+
+    }, [])
+
     return (
     <div
         style={{
