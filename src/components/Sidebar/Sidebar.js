@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { SidebarData } from './SidebarData';
-import SubMenu from './SubMenu';
+import SubMenu from './SubMenu/SubMenu';
 import * as FaIcons from 'react-icons/fa'
 import { IconContext } from 'react-icons/lib';
 import { Nav, NavIcon, NavIconTwo, SidebarNav, SidebarWrap, LogoutButton, LogoutText } from "./SidebarElements"

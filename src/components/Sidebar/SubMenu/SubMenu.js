@@ -1,46 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { colours } from "../../values/Colours"
-
-const SidebarLink = styled(Link)`
-  display: flex;
-  color: white;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  list-style: none;
-  height: 60px;
-  text-decoration: none;
-  font-size: 18px;
-  &:hover {
-    background: ${colours.BLUE1};
-    color: white;
-    border-left: 4px solid ${colours.GRAYHALF6};
-    cursor: pointer;
-  }
-`;
-
-const SidebarLabel = styled.span`
-  margin-left: 16px;
-  
-`;
-
-const DropdownLink = styled(Link)`
-  background: ${colours.GRAY3};
-  height: 60px;
-  padding-left: 3rem;
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: #f5f5f5;
-  font-size: 18px;
-  &:hover {
-    background: ${colours.BLUE2};
-    cursor: pointer;
-  }
-`;
-
+import { colours } from "../../../values/Colours"
+import { SidebarLink, SidebarLabel, DropdownLink} from "./SubMenuElements"
 
 const SubMenu = ({ item }) => {
   const [subnav, setSubnav] = useState(false);
