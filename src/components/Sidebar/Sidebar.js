@@ -28,7 +28,7 @@ function Sidebar() {
                     })}
                     <LogoutButton to="#">
                         <FaIcons.FaSignOutAlt />
-                        <LogoutText>Admin Console</LogoutText>
+                        <LogoutText>Logout</LogoutText>
                     </LogoutButton>
                 </SidebarWrap>         
             </SidebarNav>
