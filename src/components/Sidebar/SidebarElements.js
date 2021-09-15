@@ -54,11 +54,13 @@ export const LogoutButton = styled(Link)`
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    margin-top: 250px;
     color: white;
     background-color: transparent;
     text-decoration: none;
     list-style: none;
+    bottom: 2rem;
+    left: 0;
+    position: absolute;
 `
 export const LogoutText = styled.div`
     font-size: 18px !important;

@@ -1,6 +1,10 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import { getMyAccount } from "../../apis/Account/AccountApis";
+import { Account } from "../../apis/Entities/Account";
 
 function UserManagement() {
+    const [account, setAccount] = useState<Account>();
+
     return (
     <div
         style={{

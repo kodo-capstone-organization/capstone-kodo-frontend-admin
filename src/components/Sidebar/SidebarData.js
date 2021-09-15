@@ -18,7 +18,7 @@ export const SidebarData = [
        icon: <GroupIcon />,
     },
     { 
-        title: 'Course Management',
+        title: 'Course Issues',
         path: '#',
         icon: <MenuBookIcon />,
         iconClosed: <ArrowDropDownIcon />,
