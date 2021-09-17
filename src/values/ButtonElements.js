@@ -5,7 +5,7 @@ import { fontSizes } from "./FontSizes";
 
 export const Button = styled(LinkR)`
   border-radius: 10px;
-  background: ${({ primary }) => (primary ? colours.BLUE1 : colours.GRAY7)};
+  background: ${({ primary }) => (primary ? colours.GRAY2 : colours.GRAY7)};
   white-space: nowrap;
   padding: ${({ big }) => (big ? "14px 48px" : "8px 30px")};
   color: ${({ primary }) => (primary ? colours.WHITE : colours.GRAY2)};

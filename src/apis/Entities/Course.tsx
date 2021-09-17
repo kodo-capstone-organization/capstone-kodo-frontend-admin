@@ -25,3 +25,7 @@ export interface UpdateCourseReq {
   updateLessonReqs: UpdateLessonReq[];
   enrolledCourseIds: number[];
 }
+
+export interface ToggleCourseResp {
+  responseBody: string
+}

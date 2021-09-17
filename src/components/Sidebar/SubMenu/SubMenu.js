@@ -1,7 +1,4 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { colours } from "../../../values/Colours"
 import { SidebarLink, SidebarLabel, DropdownLink} from "./SubMenuElements"
 
 const SubMenu = ({ item }) => {
