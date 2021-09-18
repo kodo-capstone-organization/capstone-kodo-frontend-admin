@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { colours } from "../../../values/Colours"
 import { fontSizes } from "../../../values/FontSizes"
-import { Link as LinkR } from "react-router-dom";
 
 export const CourseListContainer = styled.div`
     max-width: 75rem;

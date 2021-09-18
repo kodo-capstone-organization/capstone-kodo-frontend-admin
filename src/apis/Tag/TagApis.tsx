@@ -9,3 +9,10 @@ export async function getAllTags(): Promise<Tag[]> {
 
     return httpClient.get<undefined, Tag[]>(getParameters)
 }
+
+export async function deleteTagByTagId(tagId: number): Promise<Tag> {
+    const getParameters: IHttpClientRequestParameters<undefined> = {
+        url: `/tag/deleteTagByTagId/${tagId}`
+    }
+    return httpClient.get<undefined, Tag>(getParameters)
+}
