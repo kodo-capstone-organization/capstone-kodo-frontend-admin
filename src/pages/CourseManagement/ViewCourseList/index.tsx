@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Course } from "../../../apis/Entities/Course";
 import { getAllCourses } from "../../../apis/Course/CourseApis"
 import { CourseListContainer, HeadingWrapper, DataGridContainer, BtnWrapper } from "./ViewCoursesElements";
-import Button from '@material-ui/core/Button';
+import { Button } from "../../../values/ButtonElements";
 
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
@@ -103,10 +103,10 @@ function ViewCourseList() {
             </DataGridContainer>
             <BtnWrapper>
                 {selectionModel.length === 0 &&
-                <Button variant="contained" disabled>View Details</Button>
+                <Button disabled>View Details</Button>
                 }
                 {selectionModel.length > 0 &&
-                <Button variant="contained" color="primary" href={`/viewcourse/managecourses/${courseId}`}>View Details</Button>
+                <Button primary to={`/viewcourse/managecourses/${courseId}`}>View Details</Button>
                 }
             </BtnWrapper>
         </CourseListContainer>

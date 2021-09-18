@@ -40,7 +40,7 @@ function ViewCourseDetails(props: any) {
 
     return (
         <CourseDetailsContainer>
-            <HeadingWrapper>Course Details</HeadingWrapper>
+            <HeadingWrapper>{course?.name}</HeadingWrapper>
             <CourseDetailsContent>
             </CourseDetailsContent>
         </CourseDetailsContainer>
