@@ -25,7 +25,7 @@ export const Button = styled(LinkR)`
 
   &:hover {
     transition: all 0.2s ease-in-out;
-    background: ${({ primary }) => (primary ? colours.BLUE2 : colours.GRAY6)};
+    background: ${({ primary }) => (primary ? colours.GRAY3 : colours.GRAY6)};
     color: ${({ primary }) => (primary ? colours.WHITE : colours.GRAY1)};
   }
 `;
