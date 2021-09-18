@@ -18,7 +18,8 @@ export const HeadingWrapper = styled.div`
     justify-content: flex-start;
     align-items: flex-start;
     width: 100%;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
+    margin-left: 20px;
     font-size: ${fontSizes.CONTENT};
     color: ${colours.BLUE1};
 `;
@@ -67,3 +68,55 @@ export const CourseDetailsCardHeader = styled(CardHeader)`
         }
     }
 `;
+
+export const DetailsCard = styled.div`
+  display: flex;
+  height: auto;
+  width: auto;
+  padding: 50px;
+  border-radius: 30px;
+  border: 1px solid ${colours.GRAY6};
+
+`;
+
+export const DetailsWrapper = styled.div`
+    display: grid;
+    grid-template-columns: 300px 500px;
+    grid-gap: 2rem;
+`
+
+export const CardTitle = styled.div`
+  font-size: ${fontSizes.SUBTEXT};
+  color: ${colours.GRAY1};
+  font-weight: bold !important;
+  margin-left: 20px;
+  margin-bottom: 2rem;
+`
+
+export const RowTitle = styled.div`
+  font-size: ${fontSizes.SUBTEXT};
+  color: ${colours.GRAY4};
+  font-weight: bold !important;
+  margin-left: 20px;
+`
+
+export const CardDescription = styled.div`
+  font-size: ${fontSizes.SUBTEXT};
+  color: ${colours.GRAY3};
+
+`;
+
+export const CardLine = styled.div`
+    width: 100px;
+    border: 1px solid ${colours.GRAY6};
+    padding-left: 20px;
+    padding-right: 20px;  
+`
+
+
+export const BtnWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    align-item: center;
+    margin-top: 2rem;
+`

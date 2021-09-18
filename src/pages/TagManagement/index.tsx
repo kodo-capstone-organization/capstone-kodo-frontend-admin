@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { TagListContainer, HeadingWrapper, DataGridContainer, BtnWrapper, DeleteButton } from './TagManagementElements'
-import { Tag } from "../../apis/Entities/Tag";
-import { getAllTags, deleteTagByTagId } from "../../apis/Tag/TagApis"
+import { Tag, TagWithAccountsCountAndCoursesCount } from "../../apis/Entities/Tag";
+import { getTagCounts, deleteTagByTagId } from "../../apis/Tag/TagApis"
 import { Button } from "../../values/ButtonElements";
 
 import { Box, Grid, TextField, Chip, InputAdornment, IconButton, Dialog, DialogTitle, DialogActions, DialogContent} from "@material-ui/core";
@@ -29,14 +29,14 @@ const columns: GridColDef[] = [
   ];
   
 function TagManagement() {
-    const [tags, setTags] = useState<Tag[]>();
+    const [tags, setTags] = useState<TagWithAccountsCountAndCoursesCount[]>();
     const [loading, setLoading] = useState<boolean>(true);
     const [isToggleActiveEnrollmentDialogOpen, setIsToggleActiveEnrollmentDialogOpen] = useState<boolean>(false);
     const [selectionModel, setSelectionModel] = useState<GridSelectionModel>([]);
 
     useEffect(() => {
         setLoading(true);
-        getAllTags().then(allTags => {
+        getTagCounts().then(allTags => {
           setTags(allTags);
         });
         setLoading(false);
@@ -48,8 +48,8 @@ function TagManagement() {
         return {
             id: tag?.tagId,
             title: tag?.title,
-            courseCount: 6,
-            userCount: 6,
+            courseCount: tag?.coursesCount,
+            userCount: tag?.accountsCount,
         }
     });
 
