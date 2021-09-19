@@ -26,19 +26,19 @@ export const SidebarData = [
         subNav: [
             {
               title: 'Courses',
-              path: '/courses/managecourses',
+              path: '/viewcourse/managecourses',
               icon: <LibraryBooksIcon />,
               cName: 'sub-nav'
             },
             {
               title: 'Tags',
-              path: '/courses/tags',
+              path: '/viewcourse/tags',
               icon: <LocalOfferIcon />,
               cName: 'sub-nav'
             },
             {
               title: 'Forums',
-              path: '/courses/forum',
+              path: '/viewcourse/forum',
               icon: <ForumIcon />
             }
           ]
