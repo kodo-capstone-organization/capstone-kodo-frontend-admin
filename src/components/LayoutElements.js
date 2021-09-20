@@ -13,6 +13,4 @@ export const LayoutContentWrapper = styled.div`
 export const LayoutContentPage = styled.div`
   height: 100%;
   width: 100%;
-  /* Conditionally account for for Sidebar's fixed width */
-  margin-left: ${({showSideBar}) => (showSideBar ? "240px" : "") } 
 `;

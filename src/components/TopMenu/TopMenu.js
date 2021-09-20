@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Container, MenuContainer, NavLogo} from "./TopMenuElements";
 
 function TopMenu(props) {
-    const [scrollNav, setScrollNav] = useState(false);
-  
+
+    const [scrollNav, setScrollNav] = useState(false);  
+
     const changeNav = () => {
       if (window.scrollY >= 80) {
         setScrollNav(true);
@@ -19,7 +20,7 @@ function TopMenu(props) {
     return (
       <Container scrollNav={scrollNav}>
         <MenuContainer>
-          <NavLogo to="/">kodo</NavLogo>
+          <NavLogo to="/users">kodo</NavLogo>
         </MenuContainer>
       </Container>
     );
