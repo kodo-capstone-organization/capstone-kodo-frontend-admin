@@ -1,9 +1,9 @@
 // import { Button } from "../../values/ButtonElements";
 import Alert from '@material-ui/lab/Alert';
-import { login as loginApi } from '../../apis/Account/AccountApis';
+import { adminLogin as loginApi } from '../../apis/Account/AccountApis';
 import { useHistory } from "react-router-dom";
 import { useState } from 'react';
-import { Button } from "@material-ui/core";
+import { Button } from '../../values/ButtonElements';
 import {
     LoginForm,
     LoginFormTitle,
@@ -27,18 +27,18 @@ function Login()
         e.preventDefault();
         loginApi(username, password)
             .then(res => {
-                loginCallback.bind(res, username, password)
+                loginCallback(res, username, password)
             })
-            .catch(err => {                                
-                setLoginFailed(err.response.data.message)
+            .catch(err => {                     
+                setLoginFailed(err.response.data.message) 
             });
     }
 
-    const loginCallback = (id: string, username: string, password: string) => {
+    const loginCallback = (id: any, username: string, password: string) => {
         window.sessionStorage.setItem("loggedInAccountId", id);
         window.sessionStorage.setItem("loggedInAccountUsername", username);
         window.sessionStorage.setItem("loggedInAccountPassword", password);
-        history.push('/');
+        history.push('/homepage');
     }
 
     const showErrors = () => {
@@ -69,7 +69,7 @@ function Login()
                             variant="filled"
                             type="text"
                             value={username}
-                            onChange={e => setUsername(e.target.value)}
+                            onChange={(e: any) => setUsername(e.target.value)}
                         ></LoginTextField>
                         <br/>
                         <LoginTextField 
@@ -78,18 +78,18 @@ function Login()
                             variant="filled"
                             type="password"
                             value={password}
-                            onChange={e => setPassword(e.target.value)}
+                            onChange={(e: any) => setPassword(e.target.value)}
                         ></LoginTextField>
                         <br/>
                             <button style={{ display: "none" }} type="submit"></button>
-                            <Button color="primary" variant="contained" onClick={loginBtnClick}>Login</Button>
-                            {/* <Button                             
+                            <Button                             
                                 big
                                 fontBig 
                                 primary
+                                onClick={loginBtnClick}
                             >
                                 Login
-                            </Button> */}
+                            </Button>
                         <br/>
                         { showErrors() }
                         <br/>

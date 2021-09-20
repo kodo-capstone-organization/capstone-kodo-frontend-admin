@@ -1,7 +1,21 @@
-import React from 'react'
-
+import { useState, useEffect } from "react";
+import { Account } from "../../apis/Entities/Account";
+import { getMyAccount } from "../../apis/Account/AccountApis";
 
 function HomePage() {
+
+	const [myAccount, setAccount] = useState<Account>();
+
+	const accountId = JSON.parse(
+		window.sessionStorage.getItem("loggedInAccountId") || "{}"
+	);
+
+	useEffect(() => {
+		getMyAccount(accountId).then(receivedAccount => {
+			setAccount(receivedAccount);
+		  });
+	}, []);
+
     return (
         <div
 			style={{
