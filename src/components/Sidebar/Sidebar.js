@@ -6,7 +6,6 @@ import { IconContext } from 'react-icons/lib';
 import { useHistory } from "react-router-dom";
 import { Nav, NavIcon, NavIconTwo, SidebarNav, SidebarWrap, LogoutButton, LogoutText } from "./SidebarElements"
 
-
 function Sidebar(props, {defaultActive}) {
     const [auth, setAuth] = useState(true);
     const [sidebar, setSidebar] = useState(false);
@@ -53,7 +52,7 @@ function Sidebar(props, {defaultActive}) {
                         <FaIcons.FaSignOutAlt />
                         <LogoutText>Logout</LogoutText>
                     </LogoutButton>
-                </SidebarWrap>         
+                </SidebarWrap>   
             </SidebarNav>
         </IconContext.Provider>
         </>
