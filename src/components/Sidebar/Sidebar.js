@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { SidebarData } from './SidebarData';
 import SubMenu from './SubMenu/SubMenu';
 import * as FaIcons from 'react-icons/fa'
@@ -7,12 +7,21 @@ import { useHistory } from "react-router-dom";
 import { Nav, NavIcon, NavIconTwo, SidebarNav, SidebarWrap, LogoutButton, LogoutText } from "./SidebarElements"
 
 
-function Sidebar() {
+function Sidebar(props, {defaultActive}) {
     const [auth, setAuth] = useState(true);
     const [sidebar, setSidebar] = useState(false);
     const showSidebar = () => setSidebar(!sidebar);
-
+    const location = props.history.location;
+    const [activeIndex, setActiveIndex] = useState(defaultActive || 0);
     let history = useHistory();
+
+    // Re-renders when the route changes
+    useEffect(() => {
+        // Get index of item with the same / containing 'route' as the one provided by react router (the current route)
+        // Using "includes" ensures that even nested pages are counted
+        const activeItem = SidebarData.findIndex(item => location.pathname.includes(item.route));
+        setActiveIndex(activeItem)
+    }, [location])
 
     const logoutBtnClick = (e) => {
       setAuth(!auth);

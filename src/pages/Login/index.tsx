@@ -38,7 +38,7 @@ function Login()
         window.sessionStorage.setItem("loggedInAccountId", id);
         window.sessionStorage.setItem("loggedInAccountUsername", username);
         window.sessionStorage.setItem("loggedInAccountPassword", password);
-        history.push('/homepage');
+        history.push('/users');
     }
 
     const showErrors = () => {
