@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from 'react'
+import { useState, useEffect, useReducer } from 'react'
 import { withRouter, useHistory } from 'react-router-dom';
 import { getCourseByCourseId, toggleEnrollmentActiveStatus, updateCourse } from './../../../apis/Course/CourseApis';
 import { Tag } from "../../../apis/Entities/Tag";
@@ -7,11 +7,15 @@ import { Lesson } from "../../../apis/Entities/Lesson";
 import { Multimedia } from "../../../apis/Entities/Multimedia"
 import { getAllTags } from '../../../apis/Tag/TagApis';
 import { Button } from "../../../values/ButtonElements";
+import { Button as DeleteButton } from '@material-ui/core';
+import Rating from '@material-ui/lab/Rating';
+import EnrolledStudentsTable from './EnrolledStudentsTable/EnrolledStudentsTable';
 
-
-import { CourseDetailsContainer, HeadingWrapper, CourseDetailsEditContainer, DetailsCard, DetailsWrapper, CardTitle, CardDescription, RowTitle, CardLine, BtnWrapper } from "./ViewCourseDetailsElements"
+import { CourseDetailsContainer, HeadingWrapper, DetailsCard, DetailsWrapper, CardTitle, CardDescription, RowTitle, BtnWrapper, } from "./ViewCourseDetailsElements"
 import { Autocomplete } from "@material-ui/lab";
-import { Box, Grid, TextField, Chip, InputAdornment, IconButton, Dialog, DialogTitle, DialogActions, DialogContent} from "@material-ui/core";
+import { TextField, Chip, Dialog, DialogTitle, DialogActions, DialogContent, } from "@material-ui/core";
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import PanToolIcon from '@material-ui/icons/PanTool';
 
 const formReducer = (state: any, event: any) => {
     return {
@@ -27,7 +31,8 @@ function ViewCourseDetails(props: any) {
     const [tagLibrary, setTagLibrary] = useState<Tag[]>([]);
     const [bannerImageFile, setBannerImageFile] = useState<File>(new File([""], ""));
     const [isToggleActiveEnrollmentDialogOpen, setIsToggleActiveEnrollmentDialogOpen] = useState<boolean>(false);
-    
+    const [checked, setChecked] = useState<boolean>(true);
+    const history = useHistory();
 
     useEffect(() => {
         setLoading(true)
@@ -42,9 +47,10 @@ function ViewCourseDetails(props: any) {
                 handleFormDataChange(wrapperEvent)
             }) 
         });
+        
       }, [courseId]);
 
-      console.log(courseFormData.courseTags)
+      console.log(courseFormData)
 
     useEffect(() => {
         getAllTags().then((res: any)=> setTagLibrary(res)).catch(() => console.log("error getting tags."))
@@ -109,10 +115,48 @@ function ViewCourseDetails(props: any) {
             window.location.reload();
         })
     }
+
+    const handleOpenToggleEnrollmentDialog = () => {
+        setIsToggleActiveEnrollmentDialogOpen(true)
+    }
+
+    const handleCloseToggleEnrollmentDialog = () => {
+        setIsToggleActiveEnrollmentDialogOpen(false)
+    }
     
+    const handleToggleConfirmation = () => {
+        const myAccountId = window.sessionStorage.getItem("loggedInAccountId")
+        
+        if (myAccountId !== null)
+        {
+            toggleEnrollmentActiveStatus(courseFormData.courseId, parseInt(myAccountId)).then((res: any) => {
+                // Toggle success, refresh page
+                console.log(res);
+                window.location.reload();
+            }).catch(error => {
+                console.log("Error in deletion", error)
+            });
+        }
+        else
+        {
+            // No account ID found in local storage. Redirect to login
+            history.push('/login')
+        }
+    }
+
+    const  getToggleKeyword = () => {
+        return courseFormData.isEnrollmentActive ? "Pause" : "Resume"
+    }
+
     return (
         <CourseDetailsContainer>
-            <HeadingWrapper>{courseFormData.name}</HeadingWrapper>
+            <HeadingWrapper>
+                {courseFormData.name}
+                <DeleteButton color={courseFormData.isEnrollmentActive ? "secondary" : "primary"} onClick={handleOpenToggleEnrollmentDialog}>
+                    {courseFormData.isEnrollmentActive && <><PanToolIcon /> &nbsp; Pause Enrollment</>}
+                    {!courseFormData.isEnrollmentActive && <><PlayArrowIcon /> &nbsp; Resume Enrollment</>}
+                </DeleteButton>
+            </HeadingWrapper>
             <DetailsCard>
                 <DetailsWrapper>
                     <CardTitle>Basic Information</CardTitle>
@@ -121,6 +165,8 @@ function ViewCourseDetails(props: any) {
                     <CardDescription>{courseFormData.name}</CardDescription>
                     <RowTitle>Course Description</RowTitle>
                     <CardDescription>{courseFormData.description}</CardDescription>
+                    <RowTitle>Rating</RowTitle>
+                    <Rating name="read-only" value={Math.round(courseFormData.courseRating)} readOnly />
                     <RowTitle>Price</RowTitle>
                     <CardDescription>$ {courseFormData.price}</CardDescription>
                     <RowTitle>Tags</RowTitle>
@@ -144,6 +190,26 @@ function ViewCourseDetails(props: any) {
             <BtnWrapper>
                 <Button primary onClick={handleUpdateCourse} to='#'>Update Course</Button>
             </BtnWrapper>
+            <EnrolledStudentsTable course={courseId}/>
+            <Dialog fullWidth open={isToggleActiveEnrollmentDialogOpen} onClose={handleCloseToggleEnrollmentDialog} aria-labelledby="toggle-dialog">
+
+                <DialogTitle id="toggle-dialog-title">
+                    { getToggleKeyword() } Enrollment for {courseFormData.name}?
+                </DialogTitle>
+                <DialogContent>
+                    { courseFormData.isEnrollmentActive &&  <>Users will not be able to enroll in your course. Existing enrolled users will still be able to read your course materials.</> }
+                    { !courseFormData.isEnrollmentActive &&  <>Users will be able to enroll in your course again.</> }
+                </DialogContent>
+                <br/>
+                <DialogActions>
+                    <Button to= '#' onClick={handleCloseToggleEnrollmentDialog}>
+                        Cancel
+                    </Button>
+                    <Button to='#' onClick={handleToggleConfirmation} primary>
+                        Confirm
+                    </Button>
+                </DialogActions>
+            </Dialog>
         </CourseDetailsContainer>
     )
 }

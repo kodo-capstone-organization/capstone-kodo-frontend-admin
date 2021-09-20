@@ -58,15 +58,6 @@ function ViewCourseList() {
 
       console.log(courses)
 
-      interface CourseCustom{
-        id: number;
-        name: string,
-        tutorName: string,
-        activeEnrollment: boolean,
-        numEnrolled: number,
-        courseRating: number,
-      }
-
       var data = courses?.map((course) => {
         return {
             id: course.courseId,

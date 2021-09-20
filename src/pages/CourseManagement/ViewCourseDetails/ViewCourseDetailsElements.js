@@ -14,14 +14,20 @@ export const CourseDetailsContainer = styled.div`
 
 export const HeadingWrapper = styled.div`
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: flex-start;
-    width: 100%;
+    width: 96%;
     margin-bottom: 2rem;
     margin-left: 20px;
     font-size: ${fontSizes.CONTENT};
     color: ${colours.BLUE1};
+`;
+
+export const SwitchWrapper = styled.div`
+    display: grid;
+    grid-template-columns: 50px 50px;
+    margin-left: 500px;
 `;
 
 export const CourseDetailsEditContainer = styled.div`
