@@ -24,3 +24,18 @@ export async function adminLogin(username: string, password: string): Promise<Lo
     return httpClient.post<FormData, LoginResponse>(postParameters)
 }
 
+export async function getAllAccounts(): Promise<Account[]> {
+    const getParameters: IHttpClientRequestParameters<undefined> = {
+        url: '/account/getAllAccounts'
+    }
+
+    return httpClient.get<undefined, Account[]>(getParameters)
+}
+
+export async function getAccountByAccountId(accountId: number): Promise<Account> {
+    const getParameters: IHttpClientRequestParameters<undefined> = {
+        url: `/account/getAccountByAccountId/${accountId}`
+    }
+
+    return httpClient.get<undefined, Account>(getParameters);
+}
