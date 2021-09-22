@@ -2,9 +2,10 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Layout from "./components/Layout";
 import HomePage from "./pages/HomePage";
 import Login from "./pages/Login";
-import UserManagement from "./pages/UserManagement";
 import TagManagement from "./pages/TagManagement";
 import ViewCourseList from "./pages/CourseManagement/ViewCourseList";
+import ViewUserList from "./pages/UserManagement/ViewUserList";
+import ViewUserDetails from "./pages/UserManagement/ViewUserDetails";
 import ViewCourseDetails from "./pages/CourseManagement/ViewCourseDetails";
 
 function Routes() {
@@ -14,11 +15,14 @@ function Routes() {
                 <Layout {...props}>
                     <Switch>
                         <Route path="/" component={Login} exact>   
-                        {window.sessionStorage.getItem("loggedInAccountId") ? <Redirect to="/users" /> : <Login />}
+                        {window.sessionStorage.getItem("loggedInAccountId") ? <Redirect to="/login" /> : <Login />}
                         </Route>
                         <Route path="/login" component={Login} exact />
                         {window.sessionStorage.getItem("loggedInAccountId") ? 
-                        <Route path="/users" component={UserManagement} exact />
+                        <Route path="/viewusers" component={ViewUserList} exact />
+                        : <Redirect to="/" />}
+                        {window.sessionStorage.getItem("loggedInAccountId") ? 
+                        <Route path="/viewuser/manageuser/:accountId" component={ViewUserDetails} exact />
                         : <Redirect to="/" />}
                         {window.sessionStorage.getItem("loggedInAccountId") ? 
                         <Route path="/viewcourse/managecourses" component={ViewCourseList} exact />

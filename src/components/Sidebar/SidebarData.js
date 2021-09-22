@@ -14,7 +14,7 @@ import CategoryIcon from '@material-ui/icons/Category';
 export const SidebarData = [
     { 
        title: 'User Management',
-       path: '/users',
+       path: '/viewusers',
        icon: <GroupIcon />,
     },
     { 
