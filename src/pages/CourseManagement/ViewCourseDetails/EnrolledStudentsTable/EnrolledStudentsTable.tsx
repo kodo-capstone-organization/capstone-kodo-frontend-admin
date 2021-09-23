@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Course } from "../../../../apis/Entities/Course";
+import { EnrolledCourseWithStudentCompletion } from "../../../../apis/Entities/EnrolledCourse"
 import { getAllCourses, getCourseByCourseId } from "../../../../apis/Course/CourseApis"
+import { getEnrolledCoursesWithStudents } from "../../../../apis/EnrolledCourse/EnrolledCourseApis";
 import { CourseListContainer, HeadingWrapper, DataGridContainer, BtnWrapper } from "./EnrolledStudentsElements";
 import { Button } from "../../../../values/ButtonElements";
 
@@ -10,46 +12,70 @@ import { DataGrid, GridToolbar, GridColDef, GridValueGetterParams, GridSelection
 import { useDemoData } from '@mui/x-data-grid-generator';
 
 const columns: GridColDef[] = [
-    { field: 'id', headerName: 'ID', width: 90 },
+    { field: 'studentId', headerName: 'ID', width: 90 },
     {
-      field: 'name',
+      field: 'studentName',
       headerName: 'Name',
       width: 250,
     },
     {
-      field: 'username',
+      field: 'studentUsername',
       headerName: 'Username',
       width: 150,
     },
     {
-      field: 'status',
-      headerName: 'Status',
+      field: 'studentActive',
+      headerName: 'Active Status',
       type: 'boolean',
       width: 200,
     },
     {
-        field: 'dateOfCompletion',
+        field: 'completionDate',
         headerName: 'Date Of Completion',
         type: 'Date',
-        width: 200,
+        width: 400,
     },
   ];
 
 function EnrolledStudentsTable(props: any) {
     const courseId = props.course;
-    const [course, setCourse] = useState<Course>();
+    const [students, setStudents] = useState<EnrolledCourseWithStudentCompletion[]>();
 
     useEffect(() => {
-        getCourseByCourseId(courseId).then(receivedCourse => {
-            setCourse(receivedCourse);
+      getEnrolledCoursesWithStudents(courseId).then(receivedStudents => {
+            setStudents(receivedStudents);
           });
       }, [courseId]);
 
-      console.log(course?.enrollment)
+      console.log(students)
+
+      var data = students?.map((student) => {
+        return {
+          studentId: student.studentId,
+            studentName: student.studentName,
+            studentUsername: '@'+student.studentUsername,
+            studentActive: student.studentActive,
+            completionDate: student.completionDate != null ? student.completionDate : "In Progress",
+        }
+    });
 
     return (
         <div>
-            <h1>table for {course?.name} goes here</h1>
+            <CourseListContainer>
+            <HeadingWrapper>
+                Enrolled Students
+            </HeadingWrapper>
+            <DataGridContainer>
+            {data &&
+            <DataGrid
+                getRowId={(row) => row.studentId}
+                rows={data}
+                columns={columns}
+                
+            />
+            }
+            </DataGridContainer>
+        </CourseListContainer>
         </div>
     )
 }
