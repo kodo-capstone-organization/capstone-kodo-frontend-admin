@@ -5,6 +5,8 @@ import { Account } from "../../../apis/Entities/Account";
 
 import { UserDetailsContainer, HeadingWrapper, DetailsCard, DetailsWrapper, CardTitle, CardDescription, RowTitle, ChipWrapper } from "./ViewUserDetailsElements"
 import { Chip, } from "@material-ui/core";
+import EnrolledCoursesTable from "./EnrolledCoursesTable/EnrolledCoursesTable";
+import TutoringCoursesTable from "./TutoringCoursesTable/TutoringCoursesTable";
 
 const formReducer = (state: any, event: any) => {
     return {
@@ -49,11 +51,10 @@ function ViewUserDetails(props: any) {
     }
 
     return (
+        <>
         <UserDetailsContainer>
             <HeadingWrapper>
-                <div>
-                    <h3>User Profile</h3>
-                </div>
+                User Profile
             </HeadingWrapper>
             <DetailsCard>
                 <DetailsWrapper>
@@ -76,6 +77,9 @@ function ViewUserDetails(props: any) {
                 </DetailsWrapper>
             </DetailsCard>
         </UserDetailsContainer>
+        <EnrolledCoursesTable account={accountId}/>
+        <TutoringCoursesTable account={accountId}/>
+        </>
     )
 }
 
