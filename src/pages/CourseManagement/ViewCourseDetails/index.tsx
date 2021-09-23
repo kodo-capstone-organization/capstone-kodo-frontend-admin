@@ -153,8 +153,8 @@ function ViewCourseDetails(props: any) {
             <HeadingWrapper>
                 {courseFormData.name}
                 <DeleteButton color={courseFormData.isEnrollmentActive ? "secondary" : "primary"} onClick={handleOpenToggleEnrollmentDialog}>
-                    {courseFormData.isEnrollmentActive && <><PanToolIcon /> &nbsp; Pause Enrollment</>}
-                    {!courseFormData.isEnrollmentActive && <><PlayArrowIcon /> &nbsp; Resume Enrollment</>}
+                    {courseFormData.isEnrollmentActive && <><PanToolIcon /> &nbsp; Unpublish Course</>}
+                    {!courseFormData.isEnrollmentActive && <><PlayArrowIcon /> &nbsp; Publish Course</>}
                 </DeleteButton>
             </HeadingWrapper>
             <DetailsCard>
