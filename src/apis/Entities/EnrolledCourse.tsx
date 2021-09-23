@@ -17,3 +17,16 @@ export interface EnrolledCourseWithStudentResp {
     studentName: string,
     completionPercentage: number
 }
+
+export interface EnrolledCourseWithStudentCompletion {
+
+    studentId: number,
+
+    studentName: string,
+
+    studentUsername: string,
+
+    studentActive: boolean,
+
+    completionDate: Date,
+}
