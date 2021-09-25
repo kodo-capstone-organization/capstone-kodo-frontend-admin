@@ -20,7 +20,7 @@ function TopMenu(props) {
     return (
       <Container scrollNav={scrollNav}>
         <MenuContainer>
-          <NavLogo to="/users">kodo</NavLogo>
+          <NavLogo to="/finance/insights">kodo</NavLogo>
         </MenuContainer>
       </Container>
     );
