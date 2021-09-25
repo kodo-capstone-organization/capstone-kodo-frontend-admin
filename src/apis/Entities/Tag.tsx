@@ -9,3 +9,7 @@ export interface TagWithAccountsCountAndCoursesCount {
     accountsCount: number;
     coursesCount: number
 }
+
+export interface CreateNewTagsReq {
+    newTags: String[];
+}
