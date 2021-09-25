@@ -51,6 +51,8 @@ export const NavLogo = styled(LinkR)`
 	align-self: center;
 	margin: 0 auto;
 	color: ${colours.GRAY7};
+	z-index: 10 !important;
+	position: sticky !important;
 `;
 
 export const MenuBtn = styled.nav`

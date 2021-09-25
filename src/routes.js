@@ -7,6 +7,8 @@ import ViewCourseList from "./pages/CourseManagement/ViewCourseList";
 import ViewUserList from "./pages/UserManagement/ViewUserList";
 import ViewUserDetails from "./pages/UserManagement/ViewUserDetails";
 import ViewCourseDetails from "./pages/CourseManagement/ViewCourseDetails";
+import PlatformEarnings from "./pages/FinanceManagement/PlatformEarnings";
+import NotFound from "./pages/NotFound";
 
 function Routes() {
     return (
@@ -33,6 +35,10 @@ function Routes() {
                         {window.sessionStorage.getItem("loggedInAccountId") ? 
                         <Route path="/viewcourse/tags" component={TagManagement} exact />
                         : <Redirect to="/" />}
+                        {window.sessionStorage.getItem("loggedInAccountId") ? 
+                        <Route path="/finance/insights" component={PlatformEarnings} exact />
+                        : <Redirect to="/" />}
+                        <Route component={NotFound} />
                     </Switch>
                 </Layout>
             )} />

@@ -197,8 +197,8 @@ function ViewCourseDetails(props: any) {
                     { getToggleKeyword() } Enrollment for {courseFormData.name}?
                 </DialogTitle>
                 <DialogContent>
-                    { courseFormData.isEnrollmentActive &&  <>Users will not be able to enroll in your course. Existing enrolled users will still be able to read your course materials.</> }
-                    { !courseFormData.isEnrollmentActive &&  <>Users will be able to enroll in your course again.</> }
+                    { courseFormData.isEnrollmentActive &&  <>Users will not be able to enroll in this course. Existing enrolled users will still be able to read your course materials.</> }
+                    { !courseFormData.isEnrollmentActive &&  <>Users will be able to enroll in this course again.</> }
                 </DialogContent>
                 <br/>
                 <DialogActions>

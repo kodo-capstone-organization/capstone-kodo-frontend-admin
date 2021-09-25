@@ -11,8 +11,8 @@ export const TagListContainer = styled.div`
 
 export const HeadingWrapper = styled.div`
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: flex-start;
     width: 100%;
     margin-bottom: 1rem;

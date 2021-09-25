@@ -117,5 +117,10 @@ export const BtnWrapper = styled.div`
 `
 
 export const ChipWrapper = styled.div`
-    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 200px;
 `
+

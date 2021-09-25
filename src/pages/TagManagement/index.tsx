@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useReducer } from 'react'
 import { TagListContainer, HeadingWrapper, DataGridContainer, BtnWrapper, DeleteButton } from './TagManagementElements'
 import { Tag, TagWithAccountsCountAndCoursesCount } from "../../apis/Entities/Tag";
-import { getTagCounts, deleteTagByTagId } from "../../apis/Tag/TagApis"
+import { getTagCounts, deleteTagByTagId, getAllTags, createNewTags } from "../../apis/Tag/TagApis"
 import { Button } from "../../values/ButtonElements";
 
-import { Box, Grid, TextField, Chip, InputAdornment, IconButton, Dialog, DialogTitle, DialogActions, DialogContent} from "@material-ui/core";
+import { Box, Grid, TextField, Chip, InputAdornment, IconButton, Dialog, DialogTitle, DialogContentText, DialogActions, DialogContent} from "@material-ui/core";
 import { DataGrid, GridToolbar, GridColDef, GridValueGetterParams, GridSelectionModel  } from '@mui/x-data-grid';
+import { Autocomplete } from "@material-ui/lab";
 
 const columns: GridColDef[] = [
     { field: 'id', headerName: 'ID', width: 90 },
@@ -27,12 +28,22 @@ const columns: GridColDef[] = [
       width: 300,
     },
   ];
+
+  const formReducer = (state: any, event: any) => {
+    return {
+        ...state,
+        [event.name]: event.value
+    }
+}
   
 function TagManagement() {
     const [tags, setTags] = useState<TagWithAccountsCountAndCoursesCount[]>();
     const [loading, setLoading] = useState<boolean>(true);
-    const [isToggleActiveEnrollmentDialogOpen, setIsToggleActiveEnrollmentDialogOpen] = useState<boolean>(false);
+    const [isDeleteTagDialogOpen, setIsDeleteTagDialogOpen] = useState<boolean>(false);
+    const [isAddTagDialogOpen, setAddTagDialogOpen] = useState<boolean>(false);
     const [selectionModel, setSelectionModel] = useState<GridSelectionModel>([]);
+    const [tagLibrary, setTagLibrary] = useState<Tag[]>([]);
+    const [chips, setChips] = useState<String[]>([]);
 
     useEffect(() => {
         setLoading(true);
@@ -42,7 +53,9 @@ function TagManagement() {
         setLoading(false);
       }, []);
 
-      console.log(tags)
+      useEffect(() => {
+        getAllTags().then(res => setTagLibrary(res)).catch(error => console.log("error getting tags."))
+    }, [])
 
       var data = tags?.map((tag) => {
         return {
@@ -53,15 +66,20 @@ function TagManagement() {
         }
     });
 
-    console.log(selectionModel)
-    console.log(typeof(selectionModel[0]))
-
-    const handleOpenToggleEnrollmentDialog = () => {
-        setIsToggleActiveEnrollmentDialogOpen(true)
+    const handleDeleteTagDialog = () => {
+        setIsDeleteTagDialogOpen(true)
     }
 
-    const handleCloseToggleEnrollmentDialog = () => {
-        setIsToggleActiveEnrollmentDialogOpen(false)
+    const handleCloseDeleteTagDialog = () => {
+        setIsDeleteTagDialogOpen(false)
+    }
+
+    const handleAddTagDialog = () => {
+        setAddTagDialogOpen(true)
+    }
+
+    const handleCloseAddTagDialog = () => {
+        setAddTagDialogOpen(false)
     }
     
 
@@ -77,10 +95,28 @@ function TagManagement() {
         }
     }
 
+    const handleAddNewTags = () => {
+        var newTags = 
+        {
+            newTags: chips
+        }
+        createNewTags(newTags).then((res: String[]) => {
+            window.location.reload();
+        }).catch(err => {
+            console.log(err.response.data.message)
+        })
+    }
+
+    const handleChipChange = (e: object, value: String[], reason: string) => {
+        console.log(value)
+        setChips(value);
+    }
+
     return (
         <TagListContainer>
             <HeadingWrapper>
                 Tags
+                <Button primary onClick={handleAddTagDialog} to='#'>Add Tag</Button>
             </HeadingWrapper>
             <DataGridContainer>
             {data &&
@@ -101,13 +137,13 @@ function TagManagement() {
                 <Button big disabled to='#'>Select Before Deleting</Button>
                 }
                 {selectionModel.length === 1 &&
-                <Button primary onClick={handleOpenToggleEnrollmentDialog} to='#'>Delete Tag</Button>
+                <Button primary onClick={handleDeleteTagDialog} to='#'>Delete Tag</Button>
                 }
                 {selectionModel.length > 1 &&
-                <Button primary onClick={handleOpenToggleEnrollmentDialog} to='#'>Delete Tags</Button>
+                <Button primary onClick={handleDeleteTagDialog} to='#'>Delete Tags</Button>
                 }
             </BtnWrapper>
-                <Dialog fullWidth open={isToggleActiveEnrollmentDialogOpen} onClose={handleCloseToggleEnrollmentDialog} aria-labelledby="draggable-dialog-title">
+                <Dialog fullWidth open={isDeleteTagDialogOpen} onClose={handleCloseDeleteTagDialog} aria-labelledby="draggable-dialog-title">
 
                 <DialogTitle id="toggle-dialog-title">
                     Are you sure you want to delete tags?
@@ -117,11 +153,48 @@ function TagManagement() {
                 </DialogContent>
                 <br/>
                 <DialogActions>
-                    <Button onClick={handleCloseToggleEnrollmentDialog} to='#'>
+                    <Button onClick={handleCloseDeleteTagDialog} to='#'>
                         Cancel
                     </Button>
                     <Button onClick={handleDelete} primary to='#'>
                         Confirm
+                    </Button>
+                </DialogActions>
+            </Dialog>
+            <Dialog fullWidth open={isAddTagDialogOpen} onClose={handleCloseAddTagDialog} aria-labelledby="draggable-dialog-title">
+
+                <DialogTitle id="toggle-dialog-title">
+                    Add Tag
+                </DialogTitle>
+                <DialogContent>
+                <DialogContentText>
+                        To add tag to database enter here.
+                </DialogContentText>
+                {tags &&
+                    <Autocomplete
+                    multiple
+                    options={tagLibrary.map((option) => option.title)}
+                    defaultValue={[]}
+                    onChange={handleChipChange}
+                    freeSolo
+                    renderTags={(value: string[], getTagProps) =>
+                        value.map((option: string, index: number) => (
+                            <Chip variant="outlined" label={option} {...getTagProps({ index })} />
+                        ))
+                    }
+                    renderInput={(params) => (
+                        <TextField {...params} label="What subjects are you interested in?" />
+                    )}
+                />
+                    }   
+                </DialogContent>
+                <br/>
+                <DialogActions>
+                    <Button onClick={handleCloseAddTagDialog} to='#'>
+                        Cancel
+                    </Button>
+                    <Button onClick={handleAddNewTags} primary to='#'>
+                        Add
                     </Button>
                 </DialogActions>
             </Dialog>
