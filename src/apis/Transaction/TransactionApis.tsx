@@ -1,4 +1,4 @@
-import { Transaction, TutorCourseEarningsResp } from "../Entities/Transaction"
+import { Transaction, TutorCourseEarningsResp, PlatformEarningsResp } from "../Entities/Transaction"
 import { IHttpClientRequestParameters } from "../HttpClient/IHttpClientRequestParameters"
 import { httpClient } from "../HttpClient/HttpClient";
 
@@ -21,4 +21,11 @@ export async function getCourseEarningsPageData(accountId: number): Promise<Tuto
         url: `/transaction/getCourseEarningsPageDataByAccountId/${accountId}`
     }
     return httpClient.get<undefined, TutorCourseEarningsResp>(getParameters)
+}
+
+export async function getPlatformEarningsAdminData(requestingAccountId: number): Promise<PlatformEarningsResp> {
+    const getParameters: IHttpClientRequestParameters<undefined> = {
+        url: `/transaction/getPlatformEarningsAdminData/${requestingAccountId}`
+    }
+    return httpClient.get<undefined, PlatformEarningsResp>(getParameters)
 }

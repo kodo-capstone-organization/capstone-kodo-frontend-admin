@@ -38,7 +38,7 @@ function Login()
         window.sessionStorage.setItem("loggedInAccountId", id);
         window.sessionStorage.setItem("loggedInAccountUsername", username);
         window.sessionStorage.setItem("loggedInAccountPassword", password);
-        history.push('/viewusers');
+        history.push('/finance/insights');
     }
 
     const showErrors = () => {

@@ -3,10 +3,12 @@ import { TagListContainer, HeadingWrapper, DataGridContainer, BtnWrapper, Delete
 import { Tag, TagWithAccountsCountAndCoursesCount } from "../../apis/Entities/Tag";
 import { getTagCounts, deleteTagByTagId, getAllTags, createNewTags } from "../../apis/Tag/TagApis"
 import { Button } from "../../values/ButtonElements";
+import { useHistory } from "react-router-dom";
 
 import { Box, Grid, TextField, Chip, InputAdornment, IconButton, Dialog, DialogTitle, DialogContentText, DialogActions, DialogContent} from "@material-ui/core";
 import { DataGrid, GridToolbar, GridColDef, GridValueGetterParams, GridSelectionModel  } from '@mui/x-data-grid';
 import { Autocomplete } from "@material-ui/lab";
+import ChipInput from 'material-ui-chip-input'
 
 const columns: GridColDef[] = [
     { field: 'id', headerName: 'ID', width: 90 },
@@ -42,9 +44,9 @@ function TagManagement() {
     const [isDeleteTagDialogOpen, setIsDeleteTagDialogOpen] = useState<boolean>(false);
     const [isAddTagDialogOpen, setAddTagDialogOpen] = useState<boolean>(false);
     const [selectionModel, setSelectionModel] = useState<GridSelectionModel>([]);
-    const [tagLibrary, setTagLibrary] = useState<Tag[]>([]);
-    const [chips, setChips] = useState<String[]>([]);
-
+    const [newTags, setNewTags] = useState<String[]>([]);
+    const history = useHistory();
+    
     useEffect(() => {
         setLoading(true);
         getTagCounts().then(allTags => {
@@ -53,9 +55,6 @@ function TagManagement() {
         setLoading(false);
       }, []);
 
-      useEffect(() => {
-        getAllTags().then(res => setTagLibrary(res)).catch(error => console.log("error getting tags."))
-    }, [])
 
       var data = tags?.map((tag) => {
         return {
@@ -88,7 +87,7 @@ function TagManagement() {
             var id: number = +(i);
             deleteTagByTagId(id).then((res: any) => {
                 console.log(res);
-                window.location.reload();
+                handleCloseDeleteTagDialog();
             }).catch(error => {
                 console.log("Error in deletion", error)
             })
@@ -96,21 +95,23 @@ function TagManagement() {
     }
 
     const handleAddNewTags = () => {
-        var newTags = 
+        var createNewTagsReq = 
         {
-            newTags: chips
+            tags: newTags,
         }
-        createNewTags(newTags).then((res: String[]) => {
-            window.location.reload();
+        console.log(createNewTagsReq)
+        createNewTags(createNewTagsReq).then((res: String[]) => {
+        handleCloseAddTagDialog();
         }).catch(err => {
             console.log(err.response.data.message)
         })
     }
 
-    const handleChipChange = (e: object, value: String[], reason: string) => {
-        console.log(value)
-        setChips(value);
+    const handleChipChange = (tags: any) => {
+        setNewTags(tags);
     }
+    //console.log(newTags);
+
 
     return (
         <TagListContainer>
@@ -170,23 +171,10 @@ function TagManagement() {
                 <DialogContentText>
                         To add tag to database enter here.
                 </DialogContentText>
-                {tags &&
-                    <Autocomplete
-                    multiple
-                    options={tagLibrary.map((option) => option.title)}
-                    defaultValue={[]}
-                    onChange={handleChipChange}
-                    freeSolo
-                    renderTags={(value: string[], getTagProps) =>
-                        value.map((option: string, index: number) => (
-                            <Chip variant="outlined" label={option} {...getTagProps({ index })} />
-                        ))
-                    }
-                    renderInput={(params) => (
-                        <TextField {...params} label="What subjects are you interested in?" />
-                    )}
+                <ChipInput
+                fullWidth
+                onChange={(chips) => handleChipChange(chips)}
                 />
-                    }   
                 </DialogContent>
                 <br/>
                 <DialogActions>
@@ -203,3 +191,5 @@ function TagManagement() {
 }
 
 export default TagManagement
+
+

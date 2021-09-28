@@ -110,8 +110,8 @@ function ViewCourseDetails(props: any) {
         updateCourse(updateCourseReq, bannerImageFile).then((updatedCourse) => {
             console.log(updatedCourse);
 
-            setCourseFormData(updatedCourse)
-
+            setCourseFormData(updatedCourse);
+            
             window.location.reload();
         })
     }
@@ -132,7 +132,7 @@ function ViewCourseDetails(props: any) {
             toggleEnrollmentActiveStatus(courseFormData.courseId, parseInt(myAccountId)).then((res: any) => {
                 // Toggle success, refresh page
                 console.log(res);
-                window.location.reload();
+                handleCloseToggleEnrollmentDialog();
             }).catch(error => {
                 console.log("Error in deletion", error)
             });

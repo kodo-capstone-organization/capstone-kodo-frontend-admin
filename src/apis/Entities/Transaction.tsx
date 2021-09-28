@@ -31,3 +31,10 @@ export interface NestedCourseStats {
     courseName: string,
     data: any // stringified
 }
+
+export interface PlatformEarningsResp {
+    lifetimePlatformEarnings: number;
+    currentMonthPlatformEarnings: number;
+    lastMonthPlatformEarnings: number;
+    monthlyPlatformEarningsForLastYear: object;
+}

@@ -204,7 +204,7 @@ function ViewUserList() {
         {
             //@ts-ignore        
             createNewAccount(newUserAccount, null).then((res: Account) => {
-                window.location.reload();
+                handleCloseDialog();
             }).catch(err => {            
                 setSignUpFailed(err.response.data.message)
             })
