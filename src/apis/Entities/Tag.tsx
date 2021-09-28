@@ -11,5 +11,5 @@ export interface TagWithAccountsCountAndCoursesCount {
 }
 
 export interface CreateNewTagsReq {
-    newTags: String[];
+    tags: String[];
 }
