@@ -91,3 +91,11 @@ export async function createNewAccount(createNewAccountReq: CreateNewAccountReq,
 
     return httpClient.post<FormData, Account>(postParameters)
 }
+
+export async function getAllAccountsWithoutEnrollment(): Promise<Account[]> {
+    const getParameters: IHttpClientRequestParameters<undefined> = {
+        url: '/account/getAllAccountsWithoutEnrollment'
+    }
+
+    return httpClient.get<undefined, Account[]>(getParameters)
+}
