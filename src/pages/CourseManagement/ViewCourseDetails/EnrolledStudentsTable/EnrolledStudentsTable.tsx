@@ -71,7 +71,6 @@ function EnrolledStudentsTable(props: any) {
                 getRowId={(row) => row.studentId}
                 rows={data}
                 columns={columns}
-                
             />
             }
             </DataGridContainer>

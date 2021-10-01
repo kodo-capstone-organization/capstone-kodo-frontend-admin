@@ -1,5 +1,5 @@
 import { useState, useEffect, useReducer } from 'react'
-import { withRouter } from 'react-router-dom';
+import { withRouter, useHistory } from 'react-router-dom';
 import { getAccountByAccountId, deactivateAccount, reactivateAccount, upgradeAccount, downgradeAccount } from './../../../apis/Account/AccountApis';
 import { Account } from "../../../apis/Entities/Account";
 import { Button } from "../../../values/ButtonElements";
@@ -29,6 +29,7 @@ function ViewUserDetails(props: any) {
     const [account, setAccount] = useState<Account>();
     const [isDeactivateDialogOpen, setIsDeactivateDialogOpen] = useState<boolean>(false);
     const [isUpgradeDialogOpen, setIsUpgradeDialogOpen] = useState<boolean>(false);
+    const history = useHistory();
 
     useEffect(() => {
         getAccountByAccountId(accountId).then((account: Account) => {
@@ -80,10 +81,14 @@ function ViewUserDetails(props: any) {
         if (accountId !== undefined && adminAccountId !== null) {
             deactivateAccount(accountId, parseInt(adminAccountId))
                 .then((res) => {
-                    console.log(res);
-                    window.location.reload();
+                    history.push("/viewusers")
+                    props.callOpenSnackBar("User account successfully deactivated", "success");
+                    handleCloseDeactivateDialog();
                 })
-                .catch(error => console.log("error in deactivating", error));         
+                .catch((error) => {
+                    props.callOpenSnackBar(`Error in deactivated user account: ${error}`, "error");
+                    handleCloseDeactivateDialog(); 
+                });         
         }
     };
 
@@ -92,10 +97,14 @@ function ViewUserDetails(props: any) {
         if (accountId !== undefined && adminAccountId !== null) {
             reactivateAccount(accountId, parseInt(adminAccountId))
                 .then((res) => {
-                    console.log(res);
-                    window.location.reload();
+                    history.push("/viewusers")
+                    props.callOpenSnackBar("User account successfully reactivated", "success");
+                    handleCloseDeactivateDialog();
                 })
-                .catch(error => console.log("error in reactivating", error));         
+                .catch((error) => {
+                    props.callOpenSnackBar(`Error in reactivated user account: ${error}`, "error");
+                    handleCloseDeactivateDialog();
+                });         
         }
     };
 
@@ -115,20 +124,28 @@ function ViewUserDetails(props: any) {
         if (accountId !== undefined) {
             upgradeAccount(accountId)
                 .then((res) => {
-                    console.log(res);
-                    window.location.reload();
+                    history.push("/viewusers")
+                    props.callOpenSnackBar("User account successfully upgradd", "success");
+                    handleCloseUpgradeDialog();
                 })
-                .catch(error => console.log("error in upgrading", error));         
+                .catch((error => {
+                    props.callOpenSnackBar(`Error in upgrading user account: ${error}`, "error");
+                    handleCloseUpgradeDialog();
+                }));         
         }
     }
     const handleDowngrade = () => {
         if (accountId !== undefined) {
             downgradeAccount(accountId)
                 .then((res) => {
-                    console.log(res);
-                    window.location.reload();
+                    history.push("/viewusers")
+                    props.callOpenSnackBar("User account successfully downgraded", "success");
+                    handleCloseUpgradeDialog();
                 })
-                .catch(error => console.log("error in downgrading", error));         
+                .catch((error) => {
+                    props.callOpenSnackBar(`Error in downgraded user account: ${error}`, "error");
+                    handleCloseUpgradeDialog();
+                });         
         }
     }
 

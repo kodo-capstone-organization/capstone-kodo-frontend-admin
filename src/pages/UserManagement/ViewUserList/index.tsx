@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function ViewUserList() {
+function ViewUserList(props: any) {
     const [accounts, setAccounts] = useState<Account[]>();
     const [searchTerm, setSearchTerm] = useState<string>("");
     const [loading, setLoading] = useState<Boolean>(true);
@@ -204,6 +204,7 @@ function ViewUserList() {
         {
             //@ts-ignore        
             createNewAccount(newUserAccount, null).then((res: Account) => {
+                props.callOpenSnackBar("User account successfully downgraded", "success");
                 handleCloseDialog();
             }).catch(err => {            
                 setSignUpFailed(err.response.data.message)
