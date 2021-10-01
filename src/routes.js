@@ -69,9 +69,6 @@ function Routes() {
                         <Route path="/" component={Login} exact>   
                         {window.sessionStorage.getItem("loggedInAccountId") ? <Redirect to="/finance/insights" /> : <Login />}
                         </Route>
-                        <Route path="/login" component={Login} exact>
-                        {window.sessionStorage.getItem("loggedInAccountId") ? <Redirect to="/finance/insights" /> : <Login />} 
-                        </Route>
                         {window.sessionStorage.getItem("loggedInAccountId") ? 
                         <Route path="/viewusers" render={props => <ViewUserList {...props} callOpenSnackBar={callOpenSnackBar} />} exact />
                         : <Redirect to="/" />}
