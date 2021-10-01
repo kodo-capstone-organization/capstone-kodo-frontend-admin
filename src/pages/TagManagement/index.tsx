@@ -38,7 +38,7 @@ const columns: GridColDef[] = [
     }
 }
   
-function TagManagement() {
+function TagManagement(props: any) {
     const [tags, setTags] = useState<TagWithAccountsCountAndCoursesCount[]>();
     const [loading, setLoading] = useState<boolean>(true);
     const [isDeleteTagDialogOpen, setIsDeleteTagDialogOpen] = useState<boolean>(false);
@@ -86,10 +86,10 @@ function TagManagement() {
         for (var i of selectionModel) {
             var id: number = +(i);
             deleteTagByTagId(id).then((res: any) => {
-                console.log(res);
+                props.callOpenSnackBar("Tags successfully deleted", "success")
                 handleCloseDeleteTagDialog();
-            }).catch(error => {
-                console.log("Error in deletion", error)
+            }).catch((error) => {
+                props.callOpenSnackBar(`Error in deleting tags: ${error}`, "error")
             })
         }
     }
@@ -99,11 +99,11 @@ function TagManagement() {
         {
             tags: newTags,
         }
-        console.log(createNewTagsReq)
         createNewTags(createNewTagsReq).then((res: String[]) => {
-        handleCloseAddTagDialog();
-        }).catch(err => {
-            console.log(err.response.data.message)
+            props.callOpenSnackBar("Tags successfully added", "success")
+            handleCloseAddTagDialog();
+        }).catch((error) => {
+            props.callOpenSnackBar(`Error in adding tags: ${error}`, "error")
         })
     }
 

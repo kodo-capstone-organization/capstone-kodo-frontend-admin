@@ -111,8 +111,12 @@ function ViewCourseDetails(props: any) {
             console.log(updatedCourse);
 
             setCourseFormData(updatedCourse);
+
+            history.push("/viewcourse/managecourses")
             
-            window.location.reload();
+            props.callOpenSnackBar("Course successfully updated", "success");
+
+            
         })
     }
 
@@ -132,9 +136,12 @@ function ViewCourseDetails(props: any) {
             toggleEnrollmentActiveStatus(courseFormData.courseId, parseInt(myAccountId)).then((res: any) => {
                 // Toggle success, refresh page
                 console.log(res);
+                history.push("/viewusers")
+                props.callOpenSnackBar("Course successfully updated", "success");
                 handleCloseToggleEnrollmentDialog();
-            }).catch(error => {
-                console.log("Error in deletion", error)
+            }).catch((error) => {
+                props.callOpenSnackBar(`Error in updating course: ${error}`, "error");
+                handleCloseToggleEnrollmentDialog();
             });
         }
         else
