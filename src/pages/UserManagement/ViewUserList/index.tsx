@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function ViewUserList(props: any) {
-    const [accounts, setAccounts] = useState<Account[]>();
+    const [accounts, setAccounts] = useState<Account[]>([]);
     const [searchTerm, setSearchTerm] = useState<string>("");
     const [loading, setLoading] = useState<Boolean>(true);
     const [selectionModel, setSelectionModel] = useState<GridSelectionModel>([]);
@@ -225,7 +225,9 @@ function ViewUserList(props: any) {
             createNewAccount(newUserAccount, null).then((res: Account) => {
                 props.callOpenSnackBar("User account successfully created", "success");
                 handleCloseDialog();
-                window.location.reload();
+
+                accounts.push(res)
+                setAccounts(accounts);
             }).catch(err => {            
                 setSignUpFailed(err.response.data.message);
             })
