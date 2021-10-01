@@ -22,8 +22,8 @@ const columns: GridColDef[] = [
       width: 150,
     },
     {
-      field: 'activeEnrollment',
-      headerName: 'Active Enrollment',
+      field: 'published',
+      headerName: 'Published',
       type: 'boolean',
       width: 200,
     },
@@ -63,7 +63,7 @@ function ViewCourseList() {
             id: course.courseId,
             name: course.name,
             tutorName: course.tutor.name,
-            activeEnrollment: course.isEnrollmentActive,
+            published: course.isEnrollmentActive,
             numEnrolled: course.enrollmentLength,
             courseRating: Math.round(course.courseRating),
         }

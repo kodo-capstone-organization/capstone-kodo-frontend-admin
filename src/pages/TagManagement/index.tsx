@@ -88,6 +88,7 @@ function TagManagement(props: any) {
             deleteTagByTagId(id).then((res: any) => {
                 props.callOpenSnackBar("Tags successfully deleted", "success")
                 handleCloseDeleteTagDialog();
+                window.location.reload();
             }).catch((error) => {
                 props.callOpenSnackBar(`Error in deleting tags: ${error}`, "error")
             })
@@ -102,6 +103,7 @@ function TagManagement(props: any) {
         createNewTags(createNewTagsReq).then((res: String[]) => {
             props.callOpenSnackBar("Tags successfully added", "success")
             handleCloseAddTagDialog();
+            window.location.reload();
         }).catch((error) => {
             props.callOpenSnackBar(`Error in adding tags: ${error}`, "error")
         })
