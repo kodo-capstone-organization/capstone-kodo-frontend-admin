@@ -16,6 +16,14 @@ import { DataGrid, GridToolbar, GridColDef, GridValueGetterParams, GridSelection
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import { TextField, Chip, DialogTitle, DialogActions, DialogContent, DialogContentText, FormControlLabel, Checkbox } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import IconButton from '@material-ui/core/IconButton';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import Input from '@material-ui/core/Input';
+
 
 const columns: GridColDef[] = [
     { field: 'id', headerName: 'ID', width: 90 },
@@ -67,6 +75,8 @@ function ViewUserList(props: any) {
     const [username, setUsername] = useState<string>("");
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
+    const [showPassword, setShowPassword] = useState<Boolean>(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState<Boolean>(false);
     const [confirmPassword, setConfirmPassword] = useState<string>("");
     const [btnTags, setBtnTags] = useState<String[]>([]);
     const [isAdmin, setIsAdmin] = useState<boolean>(false);
@@ -108,6 +118,23 @@ function ViewUserList(props: any) {
     var accountId: number = +(selectionModel[0])
 
     const classes = useStyles();
+
+    const handleClickShowPassword = () => {
+        setShowPassword(!showPassword);
+    };
+
+    const handleClickShowConfirmPassword = () => {
+        setShowConfirmPassword(!showConfirmPassword);
+    };
+
+    const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
+    };
+
+    const handleMouseDownConfirmPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
+    };
+
     const handleChipChange = (e: object, value: String[], reason: string) => {
         console.log(value)
         setChips(value)
@@ -160,14 +187,6 @@ function ViewUserList(props: any) {
             errors["confirmPassword"] = true;
         }
 
-        //Btn
-        if (btnTags.length === 0) {
-            console.log('btn invalid');
-            formIsValid = false;
-            errors["btnTags"] = true;
-            setBtnTagFailed(true)
-        }
-
         setErrors(errors);
         if (formIsValid) {
             handleSignUp();
@@ -210,7 +229,7 @@ function ViewUserList(props: any) {
                 accounts.push(res)
                 setAccounts(accounts);
             }).catch(err => {            
-                setSignUpFailed(err.response.data.message)
+                setSignUpFailed(err.response.data.message);
             })
         }
         else
@@ -276,16 +295,54 @@ function ViewUserList(props: any) {
                     Start adding user.
                 </DialogContentText>
                 { showErrors() }
-                    <TextField error={errors["username"]} fullWidth required label="Username" variant="filled" value={username} onChange={e => setUsername(e.target.value)} />
-                    <br />
-                    <TextField error={errors["name"]} fullWidth required label="Name" variant="filled" value={name} onChange={e => setName(e.target.value)} />
-                    <br />
-                    <TextField error={errors["email"]} fullWidth required label="Email" variant="filled" value={email} onChange={e => setEmail(e.target.value)} />
-                    <br />
-                    <TextField error={errors["password"]} fullWidth required type="password" label="Password" variant="filled" value={password} onChange={e => setPassword(e.target.value)} />
-                    <br />
-                    <TextField error={errors["confirmPassword"]} fullWidth required type="password" label="Confirm Password" variant="filled" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} />
-                    <br />
+                    <TextField error={errors["username"]} fullWidth required label="Username" variant="standard" value={username} onChange={e => setUsername(e.target.value)} />
+                    <br /><br />
+                    <TextField error={errors["name"]} fullWidth required label="Name" variant="standard" value={name} onChange={e => setName(e.target.value)} />
+                    <br /><br />
+                    <TextField error={errors["email"]} fullWidth required label="Email" variant="standard" value={email} onChange={e => setEmail(e.target.value)} />
+                    <br /><br />
+                    <FormControl variant="filled" fullWidth>
+                        <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
+                                <Input
+                                    id="standard-adornment-password" 
+                                    type={showPassword ? 'text' : 'password'}
+                                    value={password}
+                                    onChange={(e: any) => setPassword(e.target.value)}
+                                    endAdornment={
+                                        <InputAdornment position="end">
+                                        <IconButton
+                                            aria-label="toggle password visibility"
+                                            onClick={handleClickShowPassword}
+                                            onMouseDown={handleMouseDownPassword}
+                                        >
+                                            {showPassword ? <Visibility /> : <VisibilityOff />}
+                                        </IconButton>
+                                        </InputAdornment>
+                                    }
+                            ></Input>
+                        </FormControl>
+                    <br /><br />
+                    <FormControl variant="filled" fullWidth>
+                        <InputLabel htmlFor="standard-adornment-confirm-password">Confirm Password</InputLabel>
+                                <Input
+                                    id="standard-adornment-confirm-password" 
+                                    type={showConfirmPassword ? 'text' : 'password'}
+                                    value={confirmPassword}
+                                    onChange={(e: any) => setConfirmPassword(e.target.value)}
+                                    endAdornment={
+                                        <InputAdornment position="end">
+                                        <IconButton
+                                            aria-label="toggle password visibility"
+                                            onClick={handleClickShowConfirmPassword}
+                                            onMouseDown={handleMouseDownConfirmPassword}
+                                        >
+                                            {showConfirmPassword ? <Visibility /> : <VisibilityOff />}
+                                        </IconButton>
+                                        </InputAdornment>
+                                    }
+                            ></Input>
+                        </FormControl>
+                    <br /><br />
                     <FormControlLabel
                         control={
                         <Checkbox
@@ -355,7 +412,7 @@ function ViewUserList(props: any) {
                                         ))
                                     }
                                     renderInput={(params) => (
-                                        <TextField {...params} variant="filled" label="What subjects are they interested in?" />
+                                        <TextField {...params} variant="standard" label="What subjects are they interested in?" />
                                     )}
                                 />
                                 <br />

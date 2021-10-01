@@ -9,8 +9,17 @@ import {
     LoginFormTitle,
     LoginPaper, 
     LoginPaperWrapper,
-    LoginTextField
+    LoginTextField,
+    LoginPasswordField
 } from "./LoginElements";
+
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import IconButton from '@material-ui/core/IconButton';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+
 
 
 function Login()
@@ -19,6 +28,7 @@ function Login()
     const [username, setUsername] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [loginFailed, setLoginFailed] = useState<string>("");
+    const [showPassword, setShowPassword] = useState<Boolean>(false);
 
     let history = useHistory();
 
@@ -33,6 +43,14 @@ function Login()
                 setLoginFailed(err.response.data.message) 
             });
     }
+
+    const handleClickShowPassword = () => {
+        setShowPassword(!showPassword);
+    };
+
+    const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
+    };
 
     const loginCallback = (id: any, username: string, password: string) => {
         window.sessionStorage.setItem("loggedInAccountId", id);
@@ -72,14 +90,28 @@ function Login()
                             onChange={(e: any) => setUsername(e.target.value)}
                         ></LoginTextField>
                         <br/>
-                        <LoginTextField 
-                            id="filled-basic" 
-                            label="password"
-                            variant="filled"
-                            type="password"
-                            value={password}
-                            onChange={(e: any) => setPassword(e.target.value)}
-                        ></LoginTextField>
+                        <FormControl variant="filled">
+                            <InputLabel htmlFor="filled-adornment-password">password</InputLabel>
+                                <LoginPasswordField 
+                                    id="filled-adornment-password" 
+                                    label="password"
+                                    variant="filled"
+                                    type={showPassword ? 'text' : 'password'}
+                                    value={password}
+                                    onChange={(e: any) => setPassword(e.target.value)}
+                                    endAdornment={
+                                        <InputAdornment position="end">
+                                        <IconButton
+                                            aria-label="toggle password visibility"
+                                            onClick={handleClickShowPassword}
+                                            onMouseDown={handleMouseDownPassword}
+                                        >
+                                            {showPassword ? <Visibility /> : <VisibilityOff />}
+                                        </IconButton>
+                                        </InputAdornment>
+                                    }
+                            ></LoginPasswordField>
+                        </FormControl>
                         <br/>
                             <button style={{ display: "none" }} type="submit"></button>
                             <Button                             

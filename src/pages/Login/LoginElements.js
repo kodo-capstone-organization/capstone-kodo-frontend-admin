@@ -3,6 +3,8 @@ import TextField from '@material-ui/core/TextField';
 import styled from "styled-components";
 import { Typography } from '@material-ui/core';
 import { colours } from "../../values/Colours";
+import FilledInput from '@material-ui/core/FilledInput';
+
 
 export const LoginPaperWrapper = styled.div`
     background: ${colours.GRAY2};
@@ -44,3 +46,7 @@ export const LoginFormTitle = styled(Typography)`
 export const LoginTextField = styled(TextField)`
     width: 100%;
 `;
+
+export const LoginPasswordField = styled(FilledInput)`
+    width: 100%;
+`
