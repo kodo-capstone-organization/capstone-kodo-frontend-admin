@@ -9,6 +9,7 @@ function Layout(props) {
     const location = props.history.location;
 
     const [showSideBar, setShowSideBar] = useState(true);
+    const [sidebarOpen, setSidebarOpen] = useState(false);
 //            
 
     useEffect(() => {
@@ -25,8 +26,8 @@ function Layout(props) {
         <div>
             <TopMenu />
             <LayoutContentWrapper>
-                { showSideBar && <Sidebar history={props.history}/> }
-                <LayoutContentPage>
+                { showSideBar && <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} history={props.history}/> }
+                <LayoutContentPage onClick={e => setSidebarOpen(false)}>
                     {props.children}
                 </LayoutContentPage>
             </LayoutContentWrapper>

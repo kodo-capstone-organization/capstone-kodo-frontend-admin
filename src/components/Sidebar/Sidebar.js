@@ -8,8 +8,6 @@ import { Nav, NavIcon, NavIconTwo, SidebarNav, SidebarWrap, LogoutButton, Logout
 
 function Sidebar(props, {defaultActive}) {
     const [auth, setAuth] = useState(true);
-    const [sidebar, setSidebar] = useState(false);
-    const showSidebar = () => setSidebar(!sidebar);
     const location = props.history.location;
     const [activeIndex, setActiveIndex] = useState(defaultActive || 0);
     let history = useHistory();
@@ -37,13 +35,13 @@ function Sidebar(props, {defaultActive}) {
         <IconContext.Provider value={{ color: '#fff' }}>
             <Nav>
                 <NavIcon to="#">
-                    <FaIcons.FaBars onClick={showSidebar} />
+                    <FaIcons.FaBars onClick={e => props.setSidebarOpen(true)} />
                 </NavIcon>
             </Nav>
-            <SidebarNav sidebar={sidebar}>
+            <SidebarNav sidebar={props.sidebarOpen}>
                 <SidebarWrap>
                     <NavIconTwo to='#'>
-                        <FaIcons.FaTimes onClick={showSidebar} />
+                        <FaIcons.FaTimes onClick={e => props.setSidebarOpen(false)} />
                     </NavIconTwo>
                     {SidebarData.map((item, index) => {
                         return <SubMenu item={item} key={index} />;
