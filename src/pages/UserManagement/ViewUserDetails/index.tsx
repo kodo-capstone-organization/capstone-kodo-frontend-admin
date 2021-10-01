@@ -34,6 +34,7 @@ function ViewUserDetails(props: any) {
     useEffect(() => {
         setLoading(true)
         getAccountByAccountId(accountId).then((receivedAccount: Account) => {
+            setAccount(receivedAccount);
             Object.keys(receivedAccount).map((key, index) => {
                 let wrapperEvent = {
                     target: {
