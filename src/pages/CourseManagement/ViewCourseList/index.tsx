@@ -64,7 +64,7 @@ function ViewCourseList() {
             name: course.name,
             tutorName: course.tutor.name,
             activeEnrollment: course.isEnrollmentActive,
-            numEnrolled: course.enrollment.length,
+            numEnrolled: course.enrollmentLength,
             courseRating: Math.round(course.courseRating),
         }
     });
