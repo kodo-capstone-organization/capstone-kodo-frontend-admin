@@ -204,7 +204,7 @@ function ViewUserList(props: any) {
         {
             //@ts-ignore        
             createNewAccount(newUserAccount, null).then((res: Account) => {
-                props.callOpenSnackBar("User account successfully downgraded", "success");
+                props.callOpenSnackBar("User account successfully created", "success");
                 handleCloseDialog();
             }).catch(err => {            
                 setSignUpFailed(err.response.data.message)
