@@ -10,8 +10,9 @@ export function getFileType(filename: string): MultimediaType {
             return MultimediaType.IMAGE
         case "doc":
         case "docx":
-        case "pdf":
             return MultimediaType.DOCUMENT
+        case "pdf":
+            return MultimediaType.PDF
         case "mp4":
         case "mov":
             return MultimediaType.VIDEO
