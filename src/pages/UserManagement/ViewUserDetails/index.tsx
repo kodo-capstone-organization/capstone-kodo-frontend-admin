@@ -32,12 +32,6 @@ function ViewUserDetails(props: any) {
     const history = useHistory();
 
     useEffect(() => {
-        getAccountByAccountId(accountId).then((account: Account) => {
-            setAccount(account);
-        })
-    });
-
-    useEffect(() => {
         setLoading(true)
         getAccountByAccountId(accountId).then((receivedAccount: Account) => {
             Object.keys(receivedAccount).map((key, index) => {

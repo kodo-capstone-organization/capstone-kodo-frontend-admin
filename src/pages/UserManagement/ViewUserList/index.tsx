@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router';
-import { getMyAccount, getAllAccounts, createNewAccount } from "../../../apis/Account/AccountApis";
+import { getAllAccountsWithoutEnrollment, createNewAccount } from "../../../apis/Account/AccountApis";
 import { getAllTags} from "../../../apis/Tag/TagApis";
 
 import { Account } from "../../../apis/Entities/Account";
@@ -88,7 +88,7 @@ function ViewUserList(props: any) {
     
     useEffect(() => {
         setLoading(true);
-        getAllAccounts().then(allAccounts => {
+        getAllAccountsWithoutEnrollment().then(allAccounts => {
             setAccounts(allAccounts);
         });
         getAllTags().then(res => setTagLibrary(res)).catch(error => console.log("error getting tags."))

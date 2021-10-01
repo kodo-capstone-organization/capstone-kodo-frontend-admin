@@ -17,6 +17,7 @@ export interface Course {
   bannerPictureFileName: string;
   isEnrollmentActive: boolean;
   courseRating: number;
+  enrollmentLength: number;
 }
 
 export interface UpdateCourseReq {
