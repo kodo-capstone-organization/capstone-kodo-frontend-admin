@@ -84,6 +84,7 @@ function ViewUserList(props: any) {
     const [tagLibrary, setTagLibrary] = useState<Tag[]>([]);
     const [signUpFailed, setSignUpFailed] = useState<String>("");
     const [btnTagFailed, setBtnTagFailed] = useState<Boolean>(false);
+    const [emailError, setEmailError] = useState<Boolean>(false);
     var [errors, setErrors] = useState<IErrors<any>>({
         name: "",
         username: "",
@@ -148,6 +149,7 @@ function ViewUserList(props: any) {
     const handleValidation = () => {
         let formIsValid = true;
         errors = {};
+        setEmailError(false);
         setBtnTagFailed(false)
 
         //Username
@@ -172,6 +174,7 @@ function ViewUserList(props: any) {
             if (!(lastAtPos < lastDotPos && lastAtPos > 0 && email.indexOf('@@') === -1 && lastDotPos > 2 && (email.length - lastDotPos) > 2)) {
                 formIsValid = false;
                 errors["email"] = true;
+                setEmailError(true);
             }
         }
 
@@ -195,10 +198,13 @@ function ViewUserList(props: any) {
     }
 
     const showErrors = () => {
-        if (signUpFailed)
+        if (emailError) {
+            return(<Alert variant="filled" severity="error">Email is not valid</Alert>);
+        }
+        else if (!emailError && signUpFailed)
         {
             return(<Alert variant="filled" severity="error">{signUpFailed}</Alert>);
-        }
+        }     
         else
         {
             return "";
@@ -243,7 +249,20 @@ function ViewUserList(props: any) {
     }
 
     const handleCloseDialog = () => {
-        setIsDialogOpen(false)
+        setErrors({});
+        setName("");
+        setUsername("");
+        setEmail("");
+        setPassword("");
+        setConfirmPassword("");
+        setBtnTags([]);
+        setIsAdmin(false);
+        setIsDialogOpen(false);
+        setSignUpFailed("");
+        setBtnTagFailed(false);
+        setChips([]);
+        setIsDialogOpen(false);
+        setEmailError(false);
     }
 
     const handleMaxWidthChange = (event: React.ChangeEvent<{ value: unknown }>) => {

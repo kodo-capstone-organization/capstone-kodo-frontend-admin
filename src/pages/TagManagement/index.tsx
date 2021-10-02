@@ -78,6 +78,7 @@ function TagManagement(props: any) {
     }
 
     const handleCloseAddTagDialog = () => {
+        setNewTags([]);
         setAddTagDialogOpen(false)
     }
     

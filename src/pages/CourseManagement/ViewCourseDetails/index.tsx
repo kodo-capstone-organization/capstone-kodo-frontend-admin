@@ -136,7 +136,7 @@ function ViewCourseDetails(props: any) {
             toggleEnrollmentActiveStatus(courseFormData.courseId, parseInt(myAccountId)).then((res: any) => {
                 // Toggle success, refresh page
                 console.log(res);
-                history.push("/viewusers")
+                history.push("/viewcourse/managecourses")
                 props.callOpenSnackBar("Course successfully updated", "success");
                 handleCloseToggleEnrollmentDialog();
             }).catch((error) => {
