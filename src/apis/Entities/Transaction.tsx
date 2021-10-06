@@ -38,3 +38,34 @@ export interface PlatformEarningsResp {
     lastMonthPlatformEarnings: number;
     monthlyPlatformEarningsForLastYear: object;
 }
+
+export interface CourseEarningsResp {
+    courseId: number;
+    courseName: string;
+    tutorName: string;
+    numberOfEnrollment: number;
+    lifetimeCourseEarning: number;
+    currentMonthCourseEarning: number;
+    lastMonthCourseEarning: number;
+    numEnrollmentMonth: number;
+    numEnrollmentLastMonth: number;
+    percentageCompletion: number;
+    monthlyCourseEarningForLastYear: NestedMonthEarning[];
+  }
+  
+  export interface NestedMonthEarning {
+    month: string;
+    earnings: number;
+  }
+
+  export interface TutorEarningsResp {
+    tutorId: number;
+    tutorName: string;
+    lifetimeTutorEarning: number;
+    currentMonthTutorEarning: number;
+    monthlyTutorEarningsForLastYear: NestedMonthEarning[];
+    earningsLastMonth: number;
+    numCoursesTaught: number;
+    numCoursesCreatedCurrentMonth: number;
+    numCoursesCreatedLastMonth: number;
+  }

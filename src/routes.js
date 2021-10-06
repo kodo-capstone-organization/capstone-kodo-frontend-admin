@@ -9,6 +9,8 @@ import ViewUserList from "./pages/UserManagement/ViewUserList";
 import ViewUserDetails from "./pages/UserManagement/ViewUserDetails";
 import ViewCourseDetails from "./pages/CourseManagement/ViewCourseDetails";
 import PlatformEarnings from "./pages/FinanceManagement/PlatformEarnings";
+import CourseFinanceList from "./pages/FinanceManagement/CourseEarnings";
+import CourseEarningDetails from "./pages/FinanceManagement/CourseEarnings/CourseEarningDetails";
 import NotFound from "./pages/NotFound";
 
 
@@ -86,6 +88,12 @@ function Routes() {
                         : <Redirect to="/" />}
                         {window.sessionStorage.getItem("loggedInAccountId") ? 
                         <Route path="/finance/insights" component={PlatformEarnings} exact />
+                        : <Redirect to="/" />}
+                        {window.sessionStorage.getItem("loggedInAccountId") ? 
+                        <Route path="/finance/courses" component={CourseFinanceList} exact />
+                        : <Redirect to="/" />}
+                        {window.sessionStorage.getItem("loggedInAccountId") ? 
+                        <Route path="/finance/courses/:courseId" component={CourseEarningDetails} exact />
                         : <Redirect to="/" />}
                         <Route component={NotFound} />
                     </Switch>

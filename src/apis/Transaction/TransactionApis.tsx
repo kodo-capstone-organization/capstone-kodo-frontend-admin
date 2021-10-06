@@ -1,4 +1,4 @@
-import { Transaction, TutorCourseEarningsResp, PlatformEarningsResp } from "../Entities/Transaction"
+import { Transaction, TutorCourseEarningsResp, PlatformEarningsResp, CourseEarningsResp, TutorEarningsResp } from "../Entities/Transaction"
 import { IHttpClientRequestParameters } from "../HttpClient/IHttpClientRequestParameters"
 import { httpClient } from "../HttpClient/HttpClient";
 
@@ -28,4 +28,18 @@ export async function getPlatformEarningsAdminData(requestingAccountId: number):
         url: `/transaction/getPlatformEarningsAdminData/${requestingAccountId}`
     }
     return httpClient.get<undefined, PlatformEarningsResp>(getParameters)
+}
+
+export async function getCourseEarningsAdminData(courseId: number, requestingAccountId: number): Promise<CourseEarningsResp> {
+    const getParameters: IHttpClientRequestParameters<undefined> = {
+        url: `/transaction/getCourseEarningsAdminData/${courseId}&${requestingAccountId}`
+    }
+    return httpClient.get<undefined, CourseEarningsResp>(getParameters)
+}
+
+export async function getTutorEarningsAdminData(tutorId: number, requestingAccountId: number): Promise<TutorEarningsResp> {
+    const getParameters: IHttpClientRequestParameters<undefined> = {
+        url: `/transaction/getTutorEarningsAdminData/${tutorId}&${requestingAccountId}`
+    }
+    return httpClient.get<undefined, TutorEarningsResp>(getParameters)
 }

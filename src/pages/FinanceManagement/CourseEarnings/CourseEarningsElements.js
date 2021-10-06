@@ -3,7 +3,7 @@ import { colours } from "../../../values/Colours"
 import { fontSizes } from "../../../values/FontSizes"
 
 // Elements for Earnings Index
-export const InsightContainer = styled.div`
+export const CourseEarningsContainer = styled.div`
     max-width: 75rem;
     padding: 1rem;
     margin: calc(50px + 1rem) auto 0;
@@ -33,3 +33,25 @@ export const SubHeadingWrapper = styled.div`
     font-size: ${fontSizes.CONTENT};
     color: ${colours.BLUE1};
 `;
+
+export const DataGridContainer = styled.div`
+    height: 400px;
+    width: 100%;
+`
+
+export const BtnWrapper = styled.div`
+    margin-top: 10px;
+    width: 150px;
+`
+
+export const MessageContainer = styled.div`
+  display: flex;
+  margin: 3rem;
+  align-items: center;
+  justify-content: center;
+`
+
+export const Message = styled.h1`
+  display: flex;
+  color: ${colours.BLUE1}
+`
