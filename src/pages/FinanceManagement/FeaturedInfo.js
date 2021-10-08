@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { colours } from "../../../values/Colours"
+import { colours } from "../../values/Colours"
 import { ArrowDownward, ArrowUpward } from "@material-ui/icons";
 
 // Elements for FeaturedInfo
@@ -7,6 +7,9 @@ export const Featured = styled.div`
     width: 100%;
     display: flex;
     justify-content: space-between;
+    font-family: "Roboto", sans-serif;
+    margin-bottom: 20px;
+
 `
 
 export const FeaturedItem = styled.div`
@@ -15,6 +18,7 @@ export const FeaturedItem = styled.div`
     padding: 30px;
     border-radius: 10px;
     cursor: pointer;
+    pointer-events: ${({ more }) => (more ? "auto" : "none")};
     -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
 `
@@ -42,7 +46,7 @@ export const FeaturedMoneyRate = styled.span`
 
 export const FeaturedSub = styled.span`
     font-size: 15px;
-    color: gray;
+    color: ${({ more }) => (more ? colours.BLUE2 : "gray")};
 `
 
 export const FeaturedIconUpward = styled(ArrowUpward)`
@@ -55,4 +59,12 @@ export const FeaturedIconDownward = styled(ArrowDownward)`
     font-size: 14px;
     margin-left: 5px;
     color: ${colours.RED};
+`
+
+export const MessageContainer = styled.div`
+  display: flex;
+  margin: 3rem;
+  align-items: center;
+  justify-content: center;
+  color: red;
 `

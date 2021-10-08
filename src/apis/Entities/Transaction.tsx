@@ -36,7 +36,34 @@ export interface PlatformEarningsResp {
     lifetimePlatformEarnings: number;
     currentMonthPlatformEarnings: number;
     lastMonthPlatformEarnings: number;
-    monthlyPlatformEarningsForLastYear: object;
+    monthlyPlatformEarningsForLastYear: NestedMonthEarning[];
+    lifetimeHighestEarningCourses: CourseInfo[];
+    currentMonthHighestEarningCourses: CourseInfo[];
+    lifetimeHighestEarningTutors: CourseInfo[];
+    currentMonthHighestEarningTutors: CourseInfo[];
+    currentMonthNumberOfAccountCreation: number;
+    increaseInMonthlyAccountCreation: boolean;
+    currentMonthNumberOfEnrollments: number;
+    increaseInMonthlyEnrollment: boolean;
+    currentMonthNumberOfCourseCreation: number;
+    increaseInMonthlyCourseCreation: boolean;
+    transactionWithParticularsResps: TransactionWithParticularsResp[];
+    increaseInMonthlyProfit: number;
+}
+
+export interface TransactionWithParticularsResp {
+    displayPictureUrl: string;
+    tutorName: string;
+    dateTimeOfTransaction: Date;
+    platformFee: number;
+    customerName: string;
+    courseName: string;
+}
+
+export interface CourseInfo {
+    name: string;
+    courseId: number;
+    earnings: number;
 }
 
 export interface CourseEarningsResp {

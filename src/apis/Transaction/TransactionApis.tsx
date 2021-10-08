@@ -25,7 +25,7 @@ export async function getCourseEarningsPageData(accountId: number): Promise<Tuto
 
 export async function getPlatformEarningsAdminData(requestingAccountId: number): Promise<PlatformEarningsResp> {
     const getParameters: IHttpClientRequestParameters<undefined> = {
-        url: `/transaction/getPlatformEarningsAdminData/${requestingAccountId}`
+        url: `/transaction/getPlatformMetricsAdminData/${requestingAccountId}`
     }
     return httpClient.get<undefined, PlatformEarningsResp>(getParameters)
 }

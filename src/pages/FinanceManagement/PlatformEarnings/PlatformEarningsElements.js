@@ -21,6 +21,7 @@ export const HeadingWrapper = styled.div`
     font-size: ${fontSizes.SUBHEADER};
     color: ${colours.GRAY2};
     font-weight: bold;
+    margin-left: 20px;
 `;
 
 export const SubHeadingWrapper = styled.div`
@@ -33,3 +34,11 @@ export const SubHeadingWrapper = styled.div`
     font-size: ${fontSizes.CONTENT};
     color: ${colours.BLUE1};
 `;
+
+export const MessageContainer = styled.div`
+  display: flex;
+  margin: 3rem;
+  align-items: center;
+  justify-content: center;
+  color: red;
+`
