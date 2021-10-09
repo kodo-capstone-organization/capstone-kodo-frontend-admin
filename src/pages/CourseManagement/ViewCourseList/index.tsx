@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Course } from "../../../apis/Entities/Course";
 import { getAllCourses } from "../../../apis/Course/CourseApis"
-import { CourseListContainer, HeadingWrapper, DataGridContainer, BtnWrapper } from "./ViewCoursesElements";
+import { CourseListContainer, HeadingWrapper, DataGridContainer, BtnWrapper, ForumButton } from "./ViewCoursesElements";
 import { Button } from "../../../values/ButtonElements";
+
 
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
@@ -98,6 +99,12 @@ function ViewCourseList() {
                 }
                 {selectionModel.length > 0 &&
                 <Button primary to={`/viewcourse/managecourses/${courseId}`}>View Details</Button>
+                }
+                {selectionModel.length === 0 &&
+                <Button disabled><ForumButton />View Forum</Button>
+                }
+                {selectionModel.length > 0 &&
+                <Button primary to={`/viewcourse/forum/${courseId}`}><ForumButton />View Forum</Button>
                 }
             </BtnWrapper>
         </CourseListContainer>

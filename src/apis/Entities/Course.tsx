@@ -30,3 +30,9 @@ export interface UpdateCourseReq {
 export interface ToggleCourseResp {
   responseBody: string
 }
+
+export interface CourseBasicResp {
+  courseId: number;
+  courseName: string;
+  tutorName: string;
+}

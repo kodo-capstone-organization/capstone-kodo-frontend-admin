@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { colours } from "../../../values/Colours"
 import { fontSizes } from "../../../values/FontSizes"
+import ForumIcon from '@material-ui/icons/Forum';
+
 
 export const CourseListContainer = styled.div`
     max-width: 75rem;
@@ -27,8 +29,14 @@ export const DataGridContainer = styled.div`
 `
 
 export const BtnWrapper = styled.div`
+    display: flex;  
+    justify-content: space-between;
     margin-top: 10px;
-    width: 150px;
+    width: 100%;
+`
+
+export const ForumButton = styled(ForumIcon)`
+    margin-right: 8px;
 `
 
 

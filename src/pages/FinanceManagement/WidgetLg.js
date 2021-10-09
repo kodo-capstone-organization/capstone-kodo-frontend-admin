@@ -27,7 +27,6 @@ export const WidgetLgTh = styled.th`
 `
 
 export const WidgetLgTr = styled.tr`
-
 `
 
 export const WidgetLgDate = styled.td`
