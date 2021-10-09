@@ -1,5 +1,5 @@
 import { IHttpClientRequestParameters } from "./../HttpClient/IHttpClientRequestParameters";
-import { Course, UpdateCourseReq, ToggleCourseResp, } from "../Entities/Course";
+import { Course, UpdateCourseReq, ToggleCourseResp, CourseBasicResp } from "../Entities/Course";
 import { httpClient } from "../HttpClient/HttpClient";
 import { transformToBlob } from "../../utils/BlobCreator";
 
@@ -17,6 +17,14 @@ export async function getCourseByCourseId(courseId: number): Promise<Course> {
     }
 
     return httpClient.get<undefined, Course>(getParameters);
+}
+
+export async function getBasicCourseByCourseId(courseId: number): Promise<CourseBasicResp> {
+    const getParameters: IHttpClientRequestParameters<undefined> = {
+        url: `/course/getBasicCourseByCourseId/${courseId}`
+    }
+
+    return httpClient.get<undefined, CourseBasicResp>(getParameters);
 }
 
 export async function getCourseByKeyword(keyword: string): Promise<Course[]> {

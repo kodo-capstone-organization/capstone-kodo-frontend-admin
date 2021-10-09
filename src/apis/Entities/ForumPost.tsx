@@ -4,6 +4,6 @@ export interface ForumPost {
     forumPostId: number,
     message: string,
     timeStamp: Date,
-    reply: ForumPost
+    parentForumPost: (ForumPost | null)
     account: Account
 }

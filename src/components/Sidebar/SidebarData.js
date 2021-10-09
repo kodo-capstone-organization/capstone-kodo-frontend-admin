@@ -36,11 +36,6 @@ export const SidebarData = [
               icon: <LocalOfferIcon />,
               cName: 'sub-nav'
             },
-            {
-              title: 'Forums',
-              path: '/viewcourse/forum',
-              icon: <ForumIcon />
-            }
           ]
     },
     { 

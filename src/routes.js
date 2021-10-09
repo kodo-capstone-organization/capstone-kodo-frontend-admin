@@ -15,6 +15,8 @@ import UserEarnings from "./pages/FinanceManagement/UserEarnings";
 import UserEarningsDetails from "./pages/FinanceManagement/UserEarnings/UserEarningsDetails";
 import TagEarnings from "./pages/FinanceManagement/TagManagement";
 import TagEarningDetails from "./pages/FinanceManagement/TagManagement/TagEarningDetails";
+import ForumPage from "./pages/ForumManagement";
+import ForumCategoryView from "./pages/ForumManagement/components/CategoryView";
 import NotFound from "./pages/NotFound";
 
 
@@ -110,6 +112,12 @@ function Routes() {
                         : <Redirect to="/" />}
                         {window.sessionStorage.getItem("loggedInAccountId") ? 
                         <Route path="/finance/tags/:tagId" component={TagEarningDetails} exact />
+                        : <Redirect to="/" />}
+                        {window.sessionStorage.getItem("loggedInAccountId") ? 
+                        <Route path="/viewcourse/forum/:courseId" render={props => <ForumPage {...props} callOpenSnackBar={callOpenSnackBar} />} exact />
+                        : <Redirect to="/" />}
+                        {window.sessionStorage.getItem("loggedInAccountId") ? 
+                        <Route path="/viewcourse/forum/:courseId/category/:forumCategoryId" render={props => <ForumCategoryView {...props} callOpenSnackBar={callOpenSnackBar} />} exact />
                         : <Redirect to="/" />}
                         <Route component={NotFound} />
                     </Switch>
