@@ -6,14 +6,15 @@ import { UpdateCourseReq, Course } from "../../../apis/Entities/Course";
 import { Lesson } from "../../../apis/Entities/Lesson";
 import { Multimedia } from "../../../apis/Entities/Multimedia"
 import { getAllTags } from '../../../apis/Tag/TagApis';
-import { Button } from "../../../values/ButtonElements";
+import { Button, ButtonNoLink } from "../../../values/ButtonElements";
 import { Button as DeleteButton } from '@material-ui/core';
 import Rating from '@material-ui/lab/Rating';
 import EnrolledStudentsTable from './EnrolledStudentsTable/EnrolledStudentsTable';
 
-import { CourseDetailsContainer, HeadingWrapper, DetailsCard, DetailsWrapper, CardTitle, CardDescription, RowTitle, BtnWrapper, } from "./ViewCourseDetailsElements"
+
+import { CourseDetailsContainer, HeadingWrapper, DetailsCard, DetailsWrapper, CardTitle, CardDescription, RowTitle, BtnWrapper, MessageContainer } from "./ViewCourseDetailsElements"
 import { Autocomplete } from "@material-ui/lab";
-import { TextField, Chip, Dialog, DialogTitle, DialogActions, DialogContent, } from "@material-ui/core";
+import { TextField, Chip, Dialog, DialogTitle, DialogActions, DialogContent, CircularProgress, } from "@material-ui/core";
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import PanToolIcon from '@material-ui/icons/PanTool';
 
@@ -46,6 +47,7 @@ function ViewCourseDetails(props: any) {
                 }
                 handleFormDataChange(wrapperEvent)
             }) 
+            setLoading(false);
         });
         
       }, [courseId]);
@@ -195,7 +197,7 @@ function ViewCourseDetails(props: any) {
                 </DetailsWrapper>
             </DetailsCard>
             <BtnWrapper>
-                <Button primary onClick={handleUpdateCourse} to='#'>Update Course</Button>
+                <ButtonNoLink primary onClick={handleUpdateCourse}>Update Course</ButtonNoLink>
             </BtnWrapper>
             <EnrolledStudentsTable course={courseId}/>
             <Dialog fullWidth open={isToggleActiveEnrollmentDialogOpen} onClose={handleCloseToggleEnrollmentDialog} aria-labelledby="toggle-dialog">
@@ -209,12 +211,12 @@ function ViewCourseDetails(props: any) {
                 </DialogContent>
                 <br/>
                 <DialogActions>
-                    <Button to= '#' onClick={handleCloseToggleEnrollmentDialog}>
+                    <ButtonNoLink onClick={handleCloseToggleEnrollmentDialog}>
                         Cancel
-                    </Button>
-                    <Button to='#' onClick={handleToggleConfirmation} primary>
+                    </ButtonNoLink>
+                    <ButtonNoLink onClick={handleToggleConfirmation} primary>
                         Confirm
-                    </Button>
+                    </ButtonNoLink>
                 </DialogActions>
             </Dialog>
         </CourseDetailsContainer>

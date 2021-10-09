@@ -20,7 +20,10 @@ function TransactionTable(props: any) {
         setTransactions(props.transactions);
     }, [props.transactions]);
 
-    console.log(transactions)
+    const formatDate = (date: Date) => {
+        var d = new Date(date);
+        return d.toDateString() + ', ' + d.toLocaleTimeString();
+    }
 
     return (
         <WidgetLg>
@@ -40,7 +43,7 @@ function TransactionTable(props: any) {
                             <WidgetLgImg src={t.displayPictureUrl}></WidgetLgImg>
                             <WidgetLgName>{t.customerName}</WidgetLgName>                        
                         </WidgetLgUser>
-                        <WidgetLgDate>{t.dateTimeOfTransaction}</WidgetLgDate>
+                        <WidgetLgDate>{formatDate(t.dateTimeOfTransaction)}</WidgetLgDate>
                         <WidgetLgAmount>{t.platformFee}</WidgetLgAmount>
                         <WidgetLgAmount>{t.courseName}</WidgetLgAmount>
                         <WidgetLgAmount>{t.tutorName}</WidgetLgAmount>

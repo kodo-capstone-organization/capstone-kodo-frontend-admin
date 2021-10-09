@@ -101,10 +101,10 @@ function ViewCourseList() {
                 <Button primary to={`/viewcourse/managecourses/${courseId}`}>View Details</Button>
                 }
                 {selectionModel.length === 0 &&
-                <Button disabled><ForumButton />View Forum</Button>
+                <Button disabled><ForumButton style={{'fontSize': 'medium'}} />View Forum</Button>
                 }
                 {selectionModel.length > 0 &&
-                <Button primary to={`/viewcourse/forum/${courseId}`}><ForumButton />View Forum</Button>
+                <Button primary to={`/viewcourse/forum/${courseId}`}><ForumButton style={{'fontSize': 'medium'}} />View Forum</Button>
                 }
             </BtnWrapper>
         </CourseListContainer>

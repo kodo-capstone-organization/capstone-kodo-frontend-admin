@@ -32,7 +32,7 @@ function EnrolledCoursesTable(props: any) {
       setAccount(receivedAccount);
     });
   }, [accountId]);
-
+  
   var data = account?.enrolledCourses.map((enrolledCourseToLoop) => {
     return {
       id: enrolledCourseToLoop.parentCourse.courseId,

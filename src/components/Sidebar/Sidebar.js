@@ -40,7 +40,7 @@ function Sidebar(props, {defaultActive}) {
             </Nav>
             <SidebarNav sidebar={props.sidebarOpen}>
                 <SidebarWrap>
-                    <NavIconTwo to='#'>
+                    <NavIconTwo>
                         <FaIcons.FaTimes onClick={e => props.setSidebarOpen(false)} />
                     </NavIconTwo>
                     {SidebarData.map((item, index) => {

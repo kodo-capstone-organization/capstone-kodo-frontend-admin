@@ -32,7 +32,6 @@ const columns: GridColDef[] = [
     {
         field: 'completionDate',
         headerName: 'Date Of Completion',
-        type: 'Date',
         width: 400,
     },
   ];
@@ -47,7 +46,11 @@ function EnrolledStudentsTable(props: any) {
           });
       }, [courseId]);
 
-      console.log(students)
+      
+    const formatDate = (date: Date) => {
+      var d = new Date(date);
+      return d.toDateString() + ', ' + d.toLocaleTimeString();
+    }
 
       var data = students?.map((student) => {
         return {
@@ -55,7 +58,7 @@ function EnrolledStudentsTable(props: any) {
             studentName: student.studentName,
             studentUsername: '@'+student.studentUsername,
             studentActive: student.studentActive,
-            completionDate: student.completionDate != null ? student.completionDate : "In Progress",
+            completionDate: student.completionDate != null ? formatDate(student.completionDate) : "In Progress",
         }
     });
 

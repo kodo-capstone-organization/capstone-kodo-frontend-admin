@@ -46,7 +46,7 @@ export const SubContentWrapper = styled.div`
     margin-bottom: 2rem;
     font-size: ${fontSizes.SUBTEXT};
     color: ${colours.GRAY6};
-    margin-top: -20px;
+    margin-top: -30px;
 `
 
 export const BtnWrapper = styled.div`

@@ -24,6 +24,13 @@ export const HeadingWrapper = styled.div`
     color: ${colours.BLUE1};
 `;
 
+export const MessageContainer = styled.div`
+  display: flex;
+  margin: 3rem;
+  align-items: center;
+  justify-content: center;
+`
+
 export const SwitchWrapper = styled.div`
     display: grid;
     grid-template-columns: 50px 50px;

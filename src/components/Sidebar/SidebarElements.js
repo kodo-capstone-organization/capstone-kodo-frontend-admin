@@ -21,13 +21,14 @@ export const NavIcon = styled(Link)`
     justify-content: flex-start;
     align-items: center;
 `;
-export const NavIconTwo = styled(Link)`
+export const NavIconTwo = styled.div`
     margin-left: 1rem;
     font-size: 2rem;
     height: 50px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    cursor: pointer;
 `;
 
 export const SidebarNav = styled.nav`

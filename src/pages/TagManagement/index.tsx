@@ -2,7 +2,7 @@ import React, { useState, useEffect, useReducer } from 'react'
 import { TagListContainer, HeadingWrapper, DataGridContainer, BtnWrapper, DeleteButton } from './TagManagementElements'
 import { Tag, TagWithAccountsCountAndCoursesCount } from "../../apis/Entities/Tag";
 import { getTagCounts, deleteTagByTagId, getAllTags, createNewTags } from "../../apis/Tag/TagApis"
-import { Button } from "../../values/ButtonElements";
+import { Button, ButtonNoLink } from "../../values/ButtonElements";
 import { useHistory } from "react-router-dom";
 
 import { Box, Grid, TextField, Chip, InputAdornment, IconButton, Dialog, DialogTitle, DialogContentText, DialogActions, DialogContent} from "@material-ui/core";
@@ -120,7 +120,7 @@ function TagManagement(props: any) {
         <TagListContainer>
             <HeadingWrapper>
                 Tags
-                <Button primary onClick={handleAddTagDialog} to='#'>Add Tag</Button>
+                <ButtonNoLink primary onClick={handleAddTagDialog} style={{ 'width': '150px'}}>Add Tag</ButtonNoLink>
             </HeadingWrapper>
             <DataGridContainer>
             {data &&
@@ -138,13 +138,13 @@ function TagManagement(props: any) {
             </DataGridContainer>
             <BtnWrapper>
                 {selectionModel.length === 0 &&
-                <Button big disabled to='#'>Select Before Deleting</Button>
+                <ButtonNoLink big disabled>Select Before Deleting</ButtonNoLink>
                 }
                 {selectionModel.length === 1 &&
-                <Button primary onClick={handleDeleteTagDialog} to='#'>Delete Tag</Button>
+                <ButtonNoLink primary onClick={handleDeleteTagDialog} style={{ 'width': '150px'}}>Delete Tag</ButtonNoLink>
                 }
                 {selectionModel.length > 1 &&
-                <Button primary onClick={handleDeleteTagDialog} to='#'>Delete Tags</Button>
+                <ButtonNoLink primary onClick={handleDeleteTagDialog} style={{ 'width': '150px'}}>Delete Tags</ButtonNoLink>
                 }
             </BtnWrapper>
                 <Dialog fullWidth open={isDeleteTagDialogOpen} onClose={handleCloseDeleteTagDialog} aria-labelledby="draggable-dialog-title">
@@ -157,12 +157,12 @@ function TagManagement(props: any) {
                 </DialogContent>
                 <br/>
                 <DialogActions>
-                    <Button onClick={handleCloseDeleteTagDialog} to='#'>
+                    <ButtonNoLink onClick={handleCloseDeleteTagDialog} style={{ 'width': '100px'}}>
                         Cancel
-                    </Button>
-                    <Button onClick={handleDelete} primary to='#'>
+                    </ButtonNoLink>
+                    <ButtonNoLink onClick={handleDelete} primary style={{ 'width': '100px'}}>
                         Confirm
-                    </Button>
+                    </ButtonNoLink>
                 </DialogActions>
             </Dialog>
             <Dialog fullWidth open={isAddTagDialogOpen} onClose={handleCloseAddTagDialog} aria-labelledby="draggable-dialog-title">
@@ -181,12 +181,12 @@ function TagManagement(props: any) {
                 </DialogContent>
                 <br/>
                 <DialogActions>
-                    <Button onClick={handleCloseAddTagDialog} to='#'>
+                    <ButtonNoLink onClick={handleCloseAddTagDialog} style={{ 'width': '100px'}}>
                         Cancel
-                    </Button>
-                    <Button onClick={handleAddNewTags} primary to='#'>
+                    </ButtonNoLink>
+                    <ButtonNoLink onClick={handleAddNewTags} primary style={{ 'width': '100px'}}>
                         Add
-                    </Button>
+                    </ButtonNoLink>
                 </DialogActions>
             </Dialog>
         </TagListContainer>

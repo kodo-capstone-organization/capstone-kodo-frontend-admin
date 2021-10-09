@@ -2,7 +2,7 @@ import { useState, useEffect, useReducer } from 'react'
 import { withRouter, useHistory } from 'react-router-dom';
 import { getAccountByAccountId, deactivateAccount, reactivateAccount, upgradeAccount, downgradeAccount } from './../../../apis/Account/AccountApis';
 import { Account } from "../../../apis/Entities/Account";
-import { Button } from "../../../values/ButtonElements";
+import { Button, ButtonNoLink } from "../../../values/ButtonElements";
 
 import { UserDetailsContainer, HeadingWrapper, DetailsCard, DetailsWrapper, CardTitle, CardDescription, RowTitle, ChipWrapper, BtnWrapper } from "./ViewUserDetailsElements"
 import EnrolledCoursesTable from "./EnrolledCoursesTable/EnrolledCoursesTable";
@@ -178,10 +178,10 @@ function ViewUserDetails(props: any) {
             </DetailsCard>
             <BtnWrapper>
                 {!account?.isAdmin &&
-                <Button to='#' primary onClick={handleOpenUpgradeDialog}>Upgrade User To Admin</Button>
+                <ButtonNoLink primary onClick={handleOpenUpgradeDialog}>Upgrade User To Admin</ButtonNoLink>
                 }
                 {account?.isAdmin &&
-                <Button to='#' primary onClick={handleOpenUpgradeDialog}>Downgrade User To A Normal User</Button>
+                <ButtonNoLink primary onClick={handleOpenUpgradeDialog}>Downgrade User To A Normal User</ButtonNoLink>
                 }
             </BtnWrapper>
         </UserDetailsContainer>
@@ -198,18 +198,18 @@ function ViewUserDetails(props: any) {
                 </DialogContent>
                 <br/>
                 <DialogActions>
-                    <Button to= '#' onClick={handleCloseDeactivateDialog}>
+                    <ButtonNoLink onClick={handleCloseDeactivateDialog}>
                         Cancel
-                    </Button>
+                    </ButtonNoLink>
                     {accountFormData.isActive &&
-                    <Button to='#' onClick={handleDeactivateAccount} primary>
+                    <ButtonNoLink onClick={handleDeactivateAccount} primary>
                         Deactivate
-                    </Button>
+                    </ButtonNoLink>
                     }
                     {!accountFormData.isActive &&
-                    <Button to='#' onClick={handleReactivateAccount} primary>
+                    <ButtonNoLink onClick={handleReactivateAccount} primary>
                         Reactivate
-                    </Button>
+                    </ButtonNoLink>
                     }
                 </DialogActions>
         </Dialog>
@@ -224,18 +224,18 @@ function ViewUserDetails(props: any) {
                 </DialogContent>
                 <br/>
                 <DialogActions>
-                    <Button to= '#' onClick={handleCloseUpgradeDialog}>
+                    <ButtonNoLink onClick={handleCloseUpgradeDialog}>
                         Cancel
-                    </Button>
+                    </ButtonNoLink>
                     {accountFormData.isAdmin &&
-                    <Button to='#' onClick={handleDowngrade} primary>
+                    <ButtonNoLink onClick={handleDowngrade} primary>
                         Downgrade
-                    </Button>
+                    </ButtonNoLink>
                     }
                     {!accountFormData.isAdmin &&
-                    <Button to='#' onClick={handleUpgrade} primary>
+                    <ButtonNoLink onClick={handleUpgrade} primary>
                         Upgrade
-                    </Button>
+                    </ButtonNoLink>
                     }
                 </DialogActions>
         </Dialog>

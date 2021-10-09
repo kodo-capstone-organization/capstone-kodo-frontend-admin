@@ -6,9 +6,8 @@ import { getAllTags} from "../../../apis/Tag/TagApis";
 import { Account } from "../../../apis/Entities/Account";
 import { Tag } from "../../../apis/Entities/Tag";
 
-
 import { UserListContainer, HeadingWrapper, DataGridContainer, BtnWrapper } from "./ViewUserElements";
-import { Button } from "../../../values/ButtonElements";
+import { Button, ButtonNoLink } from "../../../values/ButtonElements";
 
 import Dialog, { DialogProps } from '@material-ui/core/Dialog';
 import { Autocomplete,ToggleButton,ToggleButtonGroup,Alert } from '@material-ui/lab';
@@ -283,7 +282,7 @@ function ViewUserList(props: any) {
             <HeadingWrapper>
                 Users
                 <BtnWrapper>
-                <Button primary to='#' onClick={handleOpenDialog}>Add User</Button>
+                    <ButtonNoLink primary onClick={handleOpenDialog} style={{ 'width': '150px'}}>Add User</ButtonNoLink>
                 </BtnWrapper>
             </HeadingWrapper>
             <DataGridContainer>
@@ -437,12 +436,12 @@ function ViewUserList(props: any) {
                                 <br />
         </DialogContent>
         <DialogActions>
-          <Button to='#' onClick={handleCloseDialog}>
+          <ButtonNoLink onClick={handleCloseDialog} style={{ 'width': '100px'}}>
             Cancel
-          </Button>
-          <Button to='#' onClick={handleValidation} primary>
+          </ButtonNoLink>
+          <ButtonNoLink onClick={handleValidation} primary style={{ 'width': '100px'}}>
             Add user
-          </Button>
+          </ButtonNoLink>
         </DialogActions>
       </Dialog>
         </UserListContainer>

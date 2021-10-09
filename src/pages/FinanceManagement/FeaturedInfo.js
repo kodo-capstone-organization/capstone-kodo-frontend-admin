@@ -30,6 +30,13 @@ export const FeaturedItem = styled.div`
     cursor: pointer;
     -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+
+    &:hover {
+        transition: 0.3s ease-out;
+        transform: scale(1.05);
+        cursor: pointer;
+        background: ${colours.GRAY7};
+      }
 `
 
 export const FeaturedTitle = styled.div`
