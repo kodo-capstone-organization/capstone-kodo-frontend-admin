@@ -3,6 +3,8 @@ import { colours } from "../../values/Colours"
 import { fontSizes } from "../../values/FontSizes"
 import { Link as LinkR } from 'react-router-dom'
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+import SortByAlphaIcon from '@material-ui/icons/SortByAlpha';
+import SortIcon from '@material-ui/icons/Sort';
 
 export const ForumPageContainer = styled.div`
     max-width: 75rem;
@@ -13,8 +15,8 @@ export const ForumPageContainer = styled.div`
 
 export const HeadingWrapper = styled.div`
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: flex-start;
     width: 100%;
     margin-bottom: 1rem;
@@ -44,6 +46,7 @@ export const SubContentWrapper = styled.div`
     margin-bottom: 2rem;
     font-size: ${fontSizes.SUBTEXT};
     color: ${colours.GRAY6};
+    margin-top: -20px;
 `
 
 export const BtnWrapper = styled.div`
@@ -106,13 +109,27 @@ export const WidgetLgLink = styled(LinkR)`
       }
 `
 
+export const WidgetLgDeleteLink = styled(LinkR)`
+    color: ${colours.GRAY2};
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+
+    &:hover {
+        color: ${colours.RED};
+        transition: 0.3s ease-out;
+        transform: scale(1.2);
+        cursor: pointer;
+        font-weight: bold;
+      }
+`
+
 export const WidgetLgDate = styled(LinkR)`
     color: ${colours.GRAY2};
     cursor: pointer;
     text-decoration: none;
     white-space: nowrap;
-    margin-left: 50px;
-
+    font-size: ${fontSizes.SUBTEXT};
 
     &:hover {
         color: ${colours.BLUE1};
@@ -142,7 +159,7 @@ export const WidgetCategoryLink = styled(LinkR)`
 `
 
 export const WidgetThreadLink = styled(LinkR)`
-    font-weight: 600;
+    font-weight: 300;
     color: ${colours.GRAY2};
     cursor: pointer;
     text-decoration: none;
@@ -164,13 +181,12 @@ export const CategoryCard = styled.div`
     width: auto;
     margin-bottom: 40px;
     border-radius: 20px;
-    border: 0.5px solid ${colours.GRAY4};
+    border: 0.1px solid ${colours.GRAY6};
 `;
 
 export const WidgetLgUser = styled.td`
   display: flex;
   align-items: center;
-  font-weight: 600;
   color: ${colours.GRAY2};
 
 `
@@ -183,6 +199,17 @@ export const WidgetLgImg = styled.img`
     margin-right: 10px;
 `
 
-export const DeleteIcon = styled(DeleteForeverIcon)`
-    margin-left: 10px;
+export const DeleteIcon = styled(DeleteForeverIcon)``
+
+export const SortAlphaIcon = styled(SortByAlphaIcon)`
+    color: ${colours.GRAY2};
+`
+export const SortOldNew = styled(SortIcon)`
+    color: ${colours.GRAY2};
+`
+export const SortIconWrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
+    width: 100px;
+    margin-right: 20px;
 `

@@ -3,12 +3,34 @@ import { withRouter, useHistory } from 'react-router-dom';
 
 import { CourseBasicResp } from '../../apis/Entities/Course'
 import { ForumCategory } from '../../apis/Entities/ForumCategory'
-import { getAllForumCategoriesWithForumThreadsOnlyByCourseId as getAllForumCategoriesByCourseId } from "../../apis/Forum/ForumApis";
+import { getAllForumCategoriesWithForumThreadsOnlyByCourseId as getAllForumCategoriesByCourseId, deleteForumCategory } from "../../apis/Forum/ForumApis";
 import { getBasicCourseByCourseId } from '../../apis/Course/CourseApis';
 
-import { ForumPageContainer, HeadingWrapper, SubHeadingWrapper, MessageContainer, WidgetLgTable, WidgetLgTr, WidgetLgLink, WidgetLgTh, WidgetLgAmount, WidgetCategoryLink, CategoryCard, DeleteIcon } from './ForumElements'
+import { 
+    ForumPageContainer, 
+    HeadingWrapper, 
+    SubHeadingWrapper, 
+    MessageContainer, 
+    WidgetLgTable, WidgetLgTr, 
+    WidgetLgLink, 
+    WidgetLgTh, 
+    WidgetLgAmount, 
+    WidgetCategoryLink, 
+    CategoryCard, 
+    DeleteIcon,
+    SortAlphaIcon,
+} from './ForumElements'
 
-import CircularProgress from '@material-ui/core/CircularProgress';
+import {
+    CircularProgress,
+    List,
+    ListItem,
+    ListItemText,
+    DialogTitle,
+    Dialog,
+    IconButton,
+    Tooltip
+} from '@material-ui/core';
 
 const ForumPage = (props: any) => {
     const courseId = parseInt(props.match.params.courseId);
@@ -30,8 +52,14 @@ const ForumPage = (props: any) => {
         setLoading(false);
     }, [props, courseId])
 
-    const deleteThread = (threadId: number) => {
-        console.log(threadId);
+    const deleteCategory = (catId: number) => {
+        deleteForumCategory(catId)
+            .then((res) => {
+                props.callOpenSnackBar("Category deleted", "success")
+            })
+            .catch((err) => {
+                props.callOpenSnackBar(`Error in deleting category: ${err}`, "error")
+            })
     }
 
     return (
@@ -41,7 +69,8 @@ const ForumPage = (props: any) => {
             <SubHeadingWrapper>by {course?.tutorName}</SubHeadingWrapper>
             <br />
             <HeadingWrapper sub>All Categories</HeadingWrapper>
-            <CategoryCard>
+           {forumCategories.length === 0 ? <MessageContainer style={{'color': 'red'}}>No threads under this category.</MessageContainer> : 
+           <CategoryCard>
             <WidgetLgTable>
                 <WidgetLgTr>
                     <WidgetLgTh>Category</WidgetLgTh>
@@ -53,12 +82,19 @@ const ForumPage = (props: any) => {
                         <WidgetLgTr>
                             <WidgetLgAmount><WidgetCategoryLink to={`/viewcourse/forum/${courseId}/category/${c.forumCategoryId}`}>{c.name}</WidgetCategoryLink></WidgetLgAmount>
                             <WidgetLgAmount><WidgetLgLink>{c.forumThreads.length}</WidgetLgLink></WidgetLgAmount>
-                            <WidgetLgAmount><WidgetLgLink onClick={() => deleteThread(c.forumCategoryId)} to='#'><DeleteIcon /></WidgetLgLink></WidgetLgAmount>
+                            <WidgetLgAmount>
+                            <Tooltip title="Click to see more">
+                                <IconButton aria-label="Click to see more" onClick={() => deleteCategory(c.forumCategoryId)} color='secondary'>
+                                    <DeleteIcon />
+                                </IconButton>
+                            </Tooltip>
+                            </WidgetLgAmount>
                         </WidgetLgTr>
                     )
                 })}
             </WidgetLgTable>
             </CategoryCard>
+            }
         </ForumPageContainer>
     )
 }

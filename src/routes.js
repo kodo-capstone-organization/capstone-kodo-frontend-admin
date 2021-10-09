@@ -114,10 +114,10 @@ function Routes() {
                         <Route path="/finance/tags/:tagId" component={TagEarningDetails} exact />
                         : <Redirect to="/" />}
                         {window.sessionStorage.getItem("loggedInAccountId") ? 
-                        <Route path="/viewcourse/forum/:courseId" component={ForumPage} exact />
+                        <Route path="/viewcourse/forum/:courseId" render={props => <ForumPage {...props} callOpenSnackBar={callOpenSnackBar} />} exact />
                         : <Redirect to="/" />}
                         {window.sessionStorage.getItem("loggedInAccountId") ? 
-                        <Route path="/viewcourse/forum/:courseId/category/:forumCategoryId" component={ForumCategoryView} exact />
+                        <Route path="/viewcourse/forum/:courseId/category/:forumCategoryId" render={props => <ForumCategoryView {...props} callOpenSnackBar={callOpenSnackBar} />} exact />
                         : <Redirect to="/" />}
                         <Route component={NotFound} />
                     </Switch>
