@@ -1,4 +1,4 @@
-import { Transaction, TutorCourseEarningsResp, PlatformEarningsResp, CourseEarningsResp, TutorEarningsResp } from "../Entities/Transaction"
+import { Transaction, TutorCourseEarningsResp, PlatformEarningsResp, CourseEarningsResp, TutorEarningsResp, TagEarningsResp } from "../Entities/Transaction"
 import { IHttpClientRequestParameters } from "../HttpClient/IHttpClientRequestParameters"
 import { httpClient } from "../HttpClient/HttpClient";
 
@@ -42,4 +42,11 @@ export async function getTutorEarningsAdminData(tutorId: number, requestingAccou
         url: `/transaction/getTutorEarningsAdminData/${tutorId}&${requestingAccountId}`
     }
     return httpClient.get<undefined, TutorEarningsResp>(getParameters)
+}
+
+export async function getTagEarningsAdminData(tagId: number, requestingAccountId: number): Promise<TagEarningsResp> {
+    const getParameters: IHttpClientRequestParameters<undefined> = {
+        url: `/transaction/getTagEarningsAdminData/${tagId}&${requestingAccountId}`
+    }
+    return httpClient.get<undefined, TagEarningsResp>(getParameters)
 }

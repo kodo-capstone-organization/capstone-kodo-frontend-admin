@@ -11,7 +11,10 @@ import {
     FeaturedMoneyRate, 
     FeaturedSub, 
     FeaturedTitle,
-    MessageContainer
+    MessageContainer,
+    CourseIcon,
+    TutorIcon,
+    TooltipWrapper
 } from "../../FeaturedInfo";
 import {
     CircularProgress,
@@ -19,8 +22,11 @@ import {
     ListItem,
     ListItemText,
     DialogTitle,
-    Dialog
+    Dialog,
+    IconButton,
+    Tooltip
 } from '@material-ui/core';
+import InfoRoundedIcon from '@material-ui/icons/InfoRounded';
 
 
 const FeaturedInfo = (props: any) => {
@@ -70,41 +76,61 @@ const FeaturedInfo = (props: any) => {
     return (
         <>
         <Featured>
-            <FeaturedItem onClick={openLifetimeCourseDialog} more={platformEarnings?.lifetimeHighestEarningCourses?.length >= 1 ? true : false}>
-                <FeaturedTitle>Highest Earning Course</FeaturedTitle>
+            <FeaturedItem onClick={openLifetimeCourseDialog}>
+                <TooltipWrapper>
+                    <Tooltip title="Click to see more">
+                        <IconButton aria-label="Click to see more">
+                            <InfoRoundedIcon style={{ 'color': '#323940', 'width': '20px', }} />
+                        </IconButton>
+                    </Tooltip>
+                </TooltipWrapper>
+                <FeaturedTitle>Highest Earning Courses</FeaturedTitle>
                 <FeaturedSub>Lifetime</FeaturedSub>
                 <FeaturedMoneyContainer>
                     <FeaturedMoney>{platformEarnings?.lifetimeHighestEarningCourses[0].name}</FeaturedMoney>
                 </FeaturedMoneyContainer>
-                {platformEarnings?.lifetimeHighestEarningCourses?.length > 1 ? 
-                <FeaturedSub more>Click to see more</FeaturedSub> : "" }
             </FeaturedItem>
-            <FeaturedItem onClick={openLifetimeTutorDialog} more={platformEarnings?.lifetimeHighestEarningTutors?.length > 1 ? true : false}>
+            <FeaturedItem onClick={openLifetimeTutorDialog}>
+                <TooltipWrapper>
+                    <Tooltip title="Click to see more">
+                        <IconButton aria-label="Click to see more">
+                            <InfoRoundedIcon style={{ 'color': '#323940', 'width': '20px', }} />
+                        </IconButton>
+                    </Tooltip>
+                </TooltipWrapper>
                 <FeaturedTitle>Highest Earning  Tutors</FeaturedTitle>
                 <FeaturedSub>Lifetime</FeaturedSub>
                 <FeaturedMoneyContainer>
                     <FeaturedMoney>{platformEarnings?.lifetimeHighestEarningTutors[0].name}</FeaturedMoney>
                 </FeaturedMoneyContainer>
-                {platformEarnings?.lifetimeHighestEarningTutors?.length > 1 ? 
-                <FeaturedSub more>Click to see more</FeaturedSub> : "" }
             </FeaturedItem>
-            <FeaturedItem onClick={openMonthCourseDialog} more={platformEarnings?.currentMonthHighestEarningCourses?.length > 1 ? true : false}>
-                <FeaturedTitle>Highest Earning Course</FeaturedTitle>
+            <FeaturedItem onClick={openMonthCourseDialog}>
+                <TooltipWrapper>
+                    <Tooltip title="Click to see more">
+                        <IconButton aria-label="Click to see more">
+                            <InfoRoundedIcon style={{ 'color': '#323940', 'width': '20px', }} />
+                        </IconButton>
+                    </Tooltip>
+                </TooltipWrapper>
+                <FeaturedTitle>Highest Earning Courses</FeaturedTitle>
                 <FeaturedSub>{getCurrentMonth()}</FeaturedSub>
                 <FeaturedMoneyContainer>
                     <FeaturedMoney>{platformEarnings?.currentMonthHighestEarningCourses[0].name}</FeaturedMoney>
                 </FeaturedMoneyContainer>
-                {platformEarnings?.currentMonthHighestEarningCourses?.length > 1 ? 
-                <FeaturedSub more>Click to see more</FeaturedSub> : "" }
             </FeaturedItem>
-            <FeaturedItem onClick={openMonthTutorDialog} more={platformEarnings?.currentMonthHighestEarningTutors?.length > 1 ? true : false}>
+            <FeaturedItem onClick={openMonthTutorDialog}>
+            <TooltipWrapper>
+                    <Tooltip title="Click to see more">
+                        <IconButton aria-label="Click to see more">
+                            <InfoRoundedIcon style={{ 'color': '#323940', 'width': '20px', }} />
+                        </IconButton>
+                    </Tooltip>
+                </TooltipWrapper>
                 <FeaturedTitle>Highest Earning  Tutors</FeaturedTitle>
                 <FeaturedSub>{getCurrentMonth()}</FeaturedSub>
                 <FeaturedMoneyContainer>
                     <FeaturedMoney>{platformEarnings?.currentMonthHighestEarningTutors[0].name}</FeaturedMoney>
-                </FeaturedMoneyContainer>
-                {platformEarnings?.currentMonthHighestEarningTutors?.length > 1 ? 
-                <FeaturedSub more>Click to see more</FeaturedSub> : "" }
+                </FeaturedMoneyContainer>      
             </FeaturedItem>
         </Featured>
         <Featured>
@@ -128,11 +154,48 @@ const FeaturedInfo = (props: any) => {
         <Dialog onClose={handleCloseDialog} aria-labelledby="simple-dialog-title" open={openLCDialog}>
         <DialogTitle id="simple-dialog-title">Highest Earning Courses</DialogTitle>
         <List>
-            <ListItem>
-                <ListItemText primary="Course" />
+            {platformEarnings?.lifetimeHighestEarningCourses.map((course) => (           
+            <ListItem style={{'color': '#3B60E4'}}>
+                <CourseIcon />
+                <ListItemText primary={course.name} />
             </ListItem>
+             ))}
         </List>
         </Dialog>
+        <Dialog onClose={handleCloseDialog} aria-labelledby="simple-dialog-title" open={openLTDialog}>
+        <DialogTitle id="simple-dialog-title">Highest Earning Tutors</DialogTitle>
+        <List>
+            {platformEarnings?.lifetimeHighestEarningTutors.map((course) => (           
+            <ListItem style={{'color': '#3B60E4'}}>
+                <TutorIcon />
+                <ListItemText primary={course.name} />
+            </ListItem>
+             ))}
+        </List>
+        </Dialog>
+        <Dialog onClose={handleCloseDialog} aria-labelledby="simple-dialog-title" open={openMCDialog}>
+        <DialogTitle id="simple-dialog-title">Highest Earning Courses in {getCurrentMonth()}</DialogTitle>
+        <List>
+            {platformEarnings?.currentMonthHighestEarningCourses.map((course) => (           
+            <ListItem style={{'color': '#3B60E4'}}>
+                <CourseIcon />
+                <ListItemText primary={course.name} />
+            </ListItem>
+             ))}
+        </List>
+        </Dialog>
+        <Dialog onClose={handleCloseDialog} aria-labelledby="simple-dialog-title" open={openMTDialog}>
+        <DialogTitle id="simple-dialog-title">Highest Earning Tutors in {getCurrentMonth()}</DialogTitle>
+        <List>
+            {platformEarnings?.currentMonthHighestEarningTutors.map((course) => (           
+            <ListItem style={{'color': '#3B60E4'}}>
+                <TutorIcon />
+                <ListItemText primary={course.name} />
+            </ListItem>
+             ))}
+        </List>
+        </Dialog>
+        
         </>
     )
 }

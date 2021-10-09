@@ -11,6 +11,10 @@ import ViewCourseDetails from "./pages/CourseManagement/ViewCourseDetails";
 import PlatformEarnings from "./pages/FinanceManagement/PlatformEarnings";
 import CourseFinanceList from "./pages/FinanceManagement/CourseEarnings";
 import CourseEarningDetails from "./pages/FinanceManagement/CourseEarnings/CourseEarningDetails";
+import UserEarnings from "./pages/FinanceManagement/UserEarnings";
+import UserEarningsDetails from "./pages/FinanceManagement/UserEarnings/UserEarningsDetails";
+import TagEarnings from "./pages/FinanceManagement/TagManagement";
+import TagEarningDetails from "./pages/FinanceManagement/TagManagement/TagEarningDetails";
 import NotFound from "./pages/NotFound";
 
 
@@ -94,6 +98,18 @@ function Routes() {
                         : <Redirect to="/" />}
                         {window.sessionStorage.getItem("loggedInAccountId") ? 
                         <Route path="/finance/courses/:courseId" component={CourseEarningDetails} exact />
+                        : <Redirect to="/" />}
+                        {window.sessionStorage.getItem("loggedInAccountId") ? 
+                        <Route path="/finance/users" component={UserEarnings} exact />
+                        : <Redirect to="/" />}
+                        {window.sessionStorage.getItem("loggedInAccountId") ? 
+                        <Route path="/finance/users/:accountId" component={UserEarningsDetails} exact />
+                        : <Redirect to="/" />}
+                        {window.sessionStorage.getItem("loggedInAccountId") ? 
+                        <Route path="/finance/tags" component={TagEarnings} exact />
+                        : <Redirect to="/" />}
+                        {window.sessionStorage.getItem("loggedInAccountId") ? 
+                        <Route path="/finance/tags/:tagId" component={TagEarningDetails} exact />
                         : <Redirect to="/" />}
                         <Route component={NotFound} />
                     </Switch>

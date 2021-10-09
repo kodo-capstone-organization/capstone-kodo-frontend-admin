@@ -96,3 +96,12 @@ export interface CourseEarningsResp {
     numCoursesCreatedCurrentMonth: number;
     numCoursesCreatedLastMonth: number;
   }
+
+  export interface TagEarningsResp {
+      tagId: number,
+      tagName: string,
+      lifetimeTagEarning: number,
+      currentMonthTagEarning: number,
+      lastMonthTagEarning: number,
+      monthlyTagEarningForLastYear: NestedMonthEarning[];
+  }

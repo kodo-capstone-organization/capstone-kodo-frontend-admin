@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { colours } from "../../values/Colours"
 import { ArrowDownward, ArrowUpward } from "@material-ui/icons";
+import LibraryBooksOutlinedIcon from '@material-ui/icons/LibraryBooksOutlined';
+import PersonOutlineRoundedIcon from '@material-ui/icons/PersonOutlineRounded';
 
 // Elements for FeaturedInfo
 export const Featured = styled.div`
@@ -11,6 +13,14 @@ export const Featured = styled.div`
     margin-bottom: 20px;
 
 `
+export const CourseIcon = styled(LibraryBooksOutlinedIcon)`
+    padding-right: 8px;
+`
+
+export const TutorIcon = styled(PersonOutlineRoundedIcon)`
+    padding-right: 8px;
+`
+
 
 export const FeaturedItem = styled.div`
     flex: 1;
@@ -18,13 +28,13 @@ export const FeaturedItem = styled.div`
     padding: 30px;
     border-radius: 10px;
     cursor: pointer;
-    pointer-events: ${({ more }) => (more ? "auto" : "none")};
     -webkit-box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
 `
 
 export const FeaturedTitle = styled.div`
     font-size: 20px;
+    color: ${colours.GRAY2};
 `
 
 export const FeaturedMoneyContainer = styled.div`
@@ -36,6 +46,7 @@ export const FeaturedMoneyContainer = styled.div`
 export const FeaturedMoney = styled.span`
     font-size: 30px;
     font-weight: 600;
+    color: ${colours.GRAY2};
 `
 
 export const FeaturedMoneyRate = styled.span`
@@ -67,4 +78,12 @@ export const MessageContainer = styled.div`
   align-items: center;
   justify-content: center;
   color: red;
+`
+
+export const TooltipWrapper = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    align-self: flex-start;
+    height: 1px;
+    color: blue;
 `

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Course } from "../../../apis/Entities/Course"
 import { getAllCourses } from "../../../apis/Course/CourseApis"
-import { CourseEarningsContainer, HeadingWrapper, SubHeadingWrapper, DataGridContainer, BtnWrapper } from "./CourseEarningsElements"
+import { CourseEarningsContainer, HeadingWrapper, SubHeadingWrapper, DataGridContainer, BtnWrapper, MessageContainer,  } from "./CourseEarningsElements"
 import { Button } from "../../../values/ButtonElements";
 
 import { DataGrid, GridToolbar, GridColDef, GridValueGetterParams, GridSelectionModel  } from '@mui/x-data-grid';
@@ -41,7 +41,6 @@ const columns: GridColDef[] = [
 const CourseFinanceList = (props: any) => {
 
     const [courses, setCourses] = useState<Course[]>();
-    const [searchTerm, setSearchTerm] = useState<string>("");
     const [loading, setLoading] = useState<Boolean>(true);
     const [selectionModel, setSelectionModel] = useState<GridSelectionModel>([]);
 
