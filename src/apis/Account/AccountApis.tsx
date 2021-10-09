@@ -99,3 +99,11 @@ export async function getAllAccountsWithoutEnrollment(): Promise<Account[]> {
 
     return httpClient.get<undefined, Account[]>(getParameters)
 }
+
+export async function getAllTutors(): Promise<Account[]> {
+    const getParameters: IHttpClientRequestParameters<undefined> = {
+        url: '/account/getAllTutors'
+    }
+
+    return httpClient.get<undefined, Account[]>(getParameters)
+}

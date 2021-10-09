@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { colours } from "../../../values/Colours"
 import { fontSizes } from "../../../values/FontSizes"
+import Chip from '@material-ui/core/Chip';
 
 // Elements for Earnings Index
-export const InsightContainer = styled.div`
+export const UserEarningsContainer = styled.div`
     max-width: 75rem;
     padding: 1rem;
     margin: calc(50px + 1rem) auto 0;
@@ -33,12 +34,40 @@ export const SubHeadingWrapper = styled.div`
     margin-bottom: 2rem;
     font-size: ${fontSizes.CONTENT};
     color: ${colours.BLUE1};
+    margin-left: 20px;
 `;
+
+export const DataGridContainer = styled.div`
+    height: 400px;
+    width: 100%;
+`
+
+export const BtnWrapper = styled.div`
+    margin-top: 10px;
+    width: 150px;
+`
 
 export const MessageContainer = styled.div`
   display: flex;
   margin: 3rem;
   align-items: center;
   justify-content: center;
-  color: red;
 `
+
+export const Message = styled.h1`
+  display: flex;
+  color: ${colours.BLUE1}
+`
+
+export const UserWidgets = styled.div`
+    display: flex;
+    justify-content: space-between;
+
+`
+
+export const TagChip = styled(Chip)`
+    font-size: ${fontSizes.SUBTEXT} !important;
+    min-width: 80px;
+    margin-left: 20px;
+    margin-bottom: 50px;
+`;

@@ -1,4 +1,4 @@
-import { Transaction, TutorCourseEarningsResp, PlatformEarningsResp } from "../Entities/Transaction"
+import { Transaction, TutorCourseEarningsResp, PlatformEarningsResp, CourseEarningsResp, TutorEarningsResp, TagEarningsResp } from "../Entities/Transaction"
 import { IHttpClientRequestParameters } from "../HttpClient/IHttpClientRequestParameters"
 import { httpClient } from "../HttpClient/HttpClient";
 
@@ -25,7 +25,28 @@ export async function getCourseEarningsPageData(accountId: number): Promise<Tuto
 
 export async function getPlatformEarningsAdminData(requestingAccountId: number): Promise<PlatformEarningsResp> {
     const getParameters: IHttpClientRequestParameters<undefined> = {
-        url: `/transaction/getPlatformEarningsAdminData/${requestingAccountId}`
+        url: `/transaction/getPlatformMetricsAdminData/${requestingAccountId}`
     }
     return httpClient.get<undefined, PlatformEarningsResp>(getParameters)
+}
+
+export async function getCourseEarningsAdminData(courseId: number, requestingAccountId: number): Promise<CourseEarningsResp> {
+    const getParameters: IHttpClientRequestParameters<undefined> = {
+        url: `/transaction/getCourseEarningsAdminData/${courseId}&${requestingAccountId}`
+    }
+    return httpClient.get<undefined, CourseEarningsResp>(getParameters)
+}
+
+export async function getTutorEarningsAdminData(tutorId: number, requestingAccountId: number): Promise<TutorEarningsResp> {
+    const getParameters: IHttpClientRequestParameters<undefined> = {
+        url: `/transaction/getTutorEarningsAdminData/${tutorId}&${requestingAccountId}`
+    }
+    return httpClient.get<undefined, TutorEarningsResp>(getParameters)
+}
+
+export async function getTagEarningsAdminData(tagId: number, requestingAccountId: number): Promise<TagEarningsResp> {
+    const getParameters: IHttpClientRequestParameters<undefined> = {
+        url: `/transaction/getTagEarningsAdminData/${tagId}&${requestingAccountId}`
+    }
+    return httpClient.get<undefined, TagEarningsResp>(getParameters)
 }
