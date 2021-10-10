@@ -69,7 +69,7 @@ const ForumPage = (props: any) => {
             <SubHeadingWrapper>by {course?.tutorName}</SubHeadingWrapper>
             <br />
             <HeadingWrapper sub>All Categories</HeadingWrapper>
-           {forumCategories.length === 0 ? <MessageContainer style={{'color': 'red'}}>No threads under this category.</MessageContainer> : 
+           {forumCategories.length === 0 ? <MessageContainer style={{'color': 'red'}}>No forum under this course.</MessageContainer> : 
            <CategoryCard>
             <WidgetLgTable>
                 <WidgetLgTr>
@@ -83,8 +83,8 @@ const ForumPage = (props: any) => {
                             <WidgetLgAmount><WidgetCategoryLink to={`/viewcourse/forum/${courseId}/category/${c.forumCategoryId}`}>{c.name}</WidgetCategoryLink></WidgetLgAmount>
                             <WidgetLgAmount><WidgetLgLink>{c.forumThreads.length}</WidgetLgLink></WidgetLgAmount>
                             <WidgetLgAmount>
-                            <Tooltip title="Click to see more">
-                                <IconButton aria-label="Click to see more" onClick={() => deleteCategory(c.forumCategoryId)} color='secondary'>
+                            <Tooltip title="Delete">
+                                <IconButton aria-label="delete" onClick={() => deleteCategory(c.forumCategoryId)} color='secondary'>
                                     <DeleteIcon />
                                 </IconButton>
                             </Tooltip>

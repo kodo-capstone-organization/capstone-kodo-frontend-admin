@@ -229,8 +229,8 @@ const ForumCategoryView = (props: any) => {
                                 </WidgetLgAmount>
                                 <WidgetLgAmount><WidgetLgLink to='#'>{t.forumPosts.length}</WidgetLgLink></WidgetLgAmount>
                                 <WidgetLgAmount>
-                                <Tooltip title="Click to see more">
-                                    <IconButton aria-label="Click to see more" onClick={() => deleteThread(t.forumThreadId)} color='secondary'>
+                                <Tooltip title="Delete">
+                                    <IconButton aria-label="delete" onClick={() => deleteThread(t.forumThreadId)} color='secondary'>
                                         <DeleteIcon />
                                     </IconButton>
                                 </Tooltip>
