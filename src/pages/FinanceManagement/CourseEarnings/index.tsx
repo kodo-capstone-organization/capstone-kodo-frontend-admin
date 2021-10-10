@@ -91,7 +91,7 @@ const CourseFinanceList = (props: any) => {
                 <Button disabled>View Details</Button>
                 }
                 {selectionModel.length > 0 &&
-                <Button primary to={`/finance/courses/${courseId}`}>View Details</Button>
+                <Button primary to={`/finance/courses/${courseId}`}>View Insights</Button>
                 }
             </BtnWrapper>
         </CourseEarningsContainer>
