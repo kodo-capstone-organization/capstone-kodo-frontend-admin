@@ -33,7 +33,7 @@ export const SubHeadingWrapper = styled.div`
     width: 100%;
     margin-bottom: 2rem;
     font-size: ${fontSizes.CONTENT};
-    color: ${colours.BLUE1};
+    color: ${({ sub }) => (sub ? colours.GRAY6 : colours.BLUE1)};
 
 `;
 
@@ -212,4 +212,67 @@ export const SortIconWrapper = styled.div`
     justify-content: space-between;
     width: 100px;
     margin-right: 20px;
+`
+
+export const PostAccountImg = styled.img`
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+`
+
+export const PostAccountName = styled.div`
+    display: flex;
+    align-self: center;
+    font-weight: 600;
+    color: ${colours.BLUE2};
+
+`
+
+export const PostMessage = styled.div`
+    font-size: ${fontSizes.SUBTEXT};
+    color: ${colours.GRAY2};
+    margin-top: 20px;
+`
+
+export const ReportContainer = styled.div`
+    border-radius: 20px;
+    border: 0.1px solid ${colours.RED};
+    padding: 20px;
+    margin-top: 20px;
+`
+
+export const ReportMessage = styled.div`
+    font-size: ${fontSizes.SUBTEXT};
+    color: ${colours.RED};
+    font-weight: ${({ head }) => (head ? "bold" : "normal")};
+`
+
+export const PostListWrapper = styled.div`
+    width: 100%;
+    border-bottom: 2px solid ${colours.GRAY2};
+    border-top: 2px solid ${colours.GRAY2}
+`
+
+export const PostContainer = styled.div`
+    width: 100%;
+    border-bottom: 1px solid ${colours.GRAY5};
+    min-height: 200px;
+`
+export const PostWrapper = styled.div`
+    padding: 2rem;
+`
+
+export const ProfileContainer = styled.div`
+    display: grid;
+    grid-template-columns: 40px 200px 100px;
+    grid-gap: 20px;
+`
+
+export const PaginationContainer = styled.div`
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50px;
 `

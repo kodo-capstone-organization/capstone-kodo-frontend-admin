@@ -105,3 +105,11 @@ export interface CourseEarningsResp {
       lastMonthTagEarning: number,
       monthlyTagEarningForLastYear: NestedMonthEarning[];
   }
+
+  export interface TutorAndEarningsResp {
+    accountId: number;
+    tutorName: string;
+    username: string;
+    email: string;
+    earnings: number;
+  }

@@ -218,16 +218,16 @@ const ForumCategoryView = (props: any) => {
                         return (
                             <WidgetLgTr>
                                 <WidgetLgUser>
-                                    <WidgetThreadLink to='#'>{t.name}</WidgetThreadLink>     
+                                    <WidgetThreadLink to={`/viewcourse/forum/${courseId}/category/${categoryId}/thread/${t.forumThreadId}`}>{t.name}</WidgetThreadLink>     
                                 </WidgetLgUser>
-                                <WidgetLgDate to='#'>{formatDate(t.timeStamp)}</WidgetLgDate>
+                                <WidgetLgDate to={`/viewcourse/forum/${courseId}/category/${categoryId}/thread/${t.forumThreadId}`}>{formatDate(t.timeStamp)}</WidgetLgDate>
                                 <WidgetLgAmount>
                                     <WidgetLgLink to={`/viewuser/manageuser/${t.account.accountId}`}>
                                     <WidgetLgImg src={t.account.displayPictureUrl}></WidgetLgImg>
                                     {t.account.name}
                                     </WidgetLgLink>
                                 </WidgetLgAmount>
-                                <WidgetLgAmount><WidgetLgLink to='#'>{t.forumPosts.length}</WidgetLgLink></WidgetLgAmount>
+                                <WidgetLgAmount><WidgetLgLink to={`/viewcourse/forum/${courseId}/category/${categoryId}/thread/${t.forumThreadId}`}>{t.forumPosts.length}</WidgetLgLink></WidgetLgAmount>
                                 <WidgetLgAmount>
                                 <Tooltip title="Delete">
                                     <IconButton aria-label="delete" onClick={() => deleteThread(t.forumThreadId)} color='secondary'>

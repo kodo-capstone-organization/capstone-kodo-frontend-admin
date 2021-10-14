@@ -46,3 +46,4 @@ export interface UpdateAccountPasswordReq {
   oldPassword: string;
   newPassword: string;
 }
+

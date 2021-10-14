@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Account } from "../../../apis/Entities/Account"
+import { TutorAndEarningsResp } from '../../../apis/Entities/Transaction'
 import { getAllTutors } from "../../../apis/Account/AccountApis"
+import { getAllTutorsWithEarnings } from "../../../apis/Transaction/TransactionApis"
 import { UserEarningsContainer, HeadingWrapper, SubHeadingWrapper, DataGridContainer, BtnWrapper, MessageContainer, } from "./UserEarningsElements"
 import { Button } from "../../../values/ButtonElements";
 
@@ -23,14 +25,19 @@ const columns: GridColDef[] = [
         headerName: 'Email',
         width: 250,
     },
+    {
+        field: 'earnings',
+        headerName: 'Lifetime Earnings ($)',
+        width: 400,
+    },
 ];
 
 function UserEarnings() {
-    const [accounts, setAccounts] = useState<Account[]>([]);
+    const [accounts, setAccounts] = useState<TutorAndEarningsResp[]>([]);
     const [selectionModel, setSelectionModel] = useState<GridSelectionModel>([]);
 
     useEffect(() => {
-        getAllTutors().then(allTutors => {
+        getAllTutorsWithEarnings().then(allTutors => {
             setAccounts(allTutors);
         })
     }, [])
@@ -40,9 +47,11 @@ function UserEarnings() {
     var data = accounts?.map((account) => {
         return {
             id: account.accountId,
-            name: account.name,
+            name: account.tutorName,
             username: account.username,
-            email: account.email,        }
+            email: account.email,
+            earnings: account.earnings,
+            }
     });
 
     console.log(data);

@@ -75,6 +75,13 @@ export async function getAllForumPostsOfAForumThread(forumThreadId: number): Pro
     return httpClient.get<undefined, ForumPost[]>(getParameters)
 }
 
+export async function getAllReportedForumPostsOfAForumThread(forumThreadId: number): Promise<ForumPost[]> {
+    const getParameters: IHttpClientRequestParameters<undefined> = {
+        url: `/forumPost/getAllReportedForumPostsByForumThreadId/${forumThreadId}`
+    }
+    return httpClient.get<undefined, ForumPost[]>(getParameters)
+}
+
 export async function deleteForumPost(forumPostId: number): Promise<boolean> {
     const deleteParameters: IHttpClientRequestParameters<undefined> = {
         url: `/forumPost/deleteForumPost/${forumPostId}`

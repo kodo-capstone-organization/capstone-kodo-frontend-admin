@@ -1,9 +1,12 @@
 import { Account } from "./Account";
 
 export interface ForumPost {
-    forumPostId: number,
+    forumPostId : number,
     message: string,
     timeStamp: Date,
-    parentForumPost: (ForumPost | null)
+    isReported: boolean,
+    reasonForReport: (string | null),
+    replies: ForumPost[],
+    parentForumPost : (ForumPost | null),
     account: Account
 }
