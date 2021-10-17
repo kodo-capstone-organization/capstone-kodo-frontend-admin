@@ -4,7 +4,7 @@ import Layout from "./components/Layout";
 import HomePage from "./pages/HomePage";
 import Login from "./pages/Login";
 import TagManagement from "./pages/TagManagement";
-import ViewCourseList from "./pages/CourseManagement/ViewCourseList";
+import CourseManagement from "./pages/CourseManagement"
 import ViewUserList from "./pages/UserManagement/ViewUserList";
 import ViewUserDetails from "./pages/UserManagement/ViewUserDetails";
 import ViewCourseDetails from "./pages/CourseManagement/ViewCourseDetails";
@@ -85,7 +85,7 @@ function Routes() {
                         <Route path="/viewuser/manageuser/:accountId" render={props => <ViewUserDetails {...props} callOpenSnackBar={callOpenSnackBar} />} exact />
                         : <Redirect to="/" />}
                         {window.sessionStorage.getItem("loggedInAccountId") ? 
-                        <Route path="/viewcourse/managecourses" component={ViewCourseList} exact />
+                        <Route path="/viewcourse/managecourses" component={CourseManagement} exact />
                         : <Redirect to="/" />}
                         {window.sessionStorage.getItem("loggedInAccountId") ? 
                         <Route path="/viewcourse/managecourses/:courseId" render={props => <ViewCourseDetails {...props} callOpenSnackBar={callOpenSnackBar} />} exact />

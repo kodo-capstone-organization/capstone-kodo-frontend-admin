@@ -23,9 +23,9 @@ const columns: GridColDef[] = [
       width: 150,
     },
     {
-      field: 'published',
-      headerName: 'Published',
-      type: 'boolean',
+      field: 'status',
+      headerName: 'Status',
+      type: 'string',
       width: 200,
     },
     {
@@ -42,29 +42,35 @@ const columns: GridColDef[] = [
     },
   ];
 
-function ViewCourseList() {
-    const [courses, setCourses] = useState<Course[]>();
-    const [searchTerm, setSearchTerm] = useState<string>("");
-    const [loading, setLoading] = useState<Boolean>(true);
+function ViewCourseList(props: any) {
+    const [courses, setCourses] = useState<Course[]>([...props.courses]);
+    const [courseType, setCourseType] = useState<string>(props.courseType);
     const [selectionModel, setSelectionModel] = useState<GridSelectionModel>([]);
 
 
     useEffect(() => {
-        setLoading(true);
-        getAllCourses().then(allCourses => {
-          setCourses(allCourses);
-        });
-        setLoading(false);
-      }, []);
+        setCourses(props.courses);
+        setCourseType(props.courseType);
+      }, [props]);
 
       console.log(courses)
+
+      const findStatus = (course: Course) => {
+        if (course.isEnrollmentActive && course.isEnrollmentActive) {
+          return "Approved"
+        } else if (course.isReviewRequested && !course.isEnrollmentActive) {
+          return "Pending Approval"
+        } else if (!course.isReviewRequested && !course.isEnrollmentActive) {
+          return "Rejected"
+        }
+      }
 
       var data = courses?.map((course) => {
         return {
             id: course.courseId,
             name: course.name,
             tutorName: course.tutor.name,
-            published: course.isEnrollmentActive,
+            status: findStatus(course),
             numEnrolled: course.enrollmentLength,
             courseRating: Math.round(course.courseRating),
         }
@@ -76,10 +82,7 @@ function ViewCourseList() {
 
 
     return (
-        <CourseListContainer>
-            <HeadingWrapper>
-                Courses
-            </HeadingWrapper>
+      <>
             <DataGridContainer>
             {data &&
             <DataGrid
@@ -100,14 +103,14 @@ function ViewCourseList() {
                 {selectionModel.length > 0 &&
                 <Button primary to={`/viewcourse/managecourses/${courseId}`}>View Details</Button>
                 }
-                {selectionModel.length === 0 &&
+                {selectionModel.length === 0 && courseType !== "Pending" &&
                 <Button disabled><ForumButton style={{'fontSize': 'medium'}} />View Forum</Button>
                 }
-                {selectionModel.length > 0 &&
+                {selectionModel.length > 0 && courseType !== "Pending" &&
                 <Button primary to={`/viewcourse/forum/${courseId}`}><ForumButton style={{'fontSize': 'medium'}} />View Forum</Button>
                 }
             </BtnWrapper>
-        </CourseListContainer>
+      </>      
     )
 }
 

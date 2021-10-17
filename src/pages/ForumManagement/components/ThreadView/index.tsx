@@ -56,7 +56,7 @@ function ForumThreadView(props: any) {
             setLoading(false);
         })
     }, [props, courseId, categoryId, threadId])
-    console.log(forumThread, forumPosts, courseId, categoryId, threadId);
+    console.log(forumPosts);
 
     function changePage(offset: number) {
         setPageNumber(prevPageNumber => prevPageNumber + offset);

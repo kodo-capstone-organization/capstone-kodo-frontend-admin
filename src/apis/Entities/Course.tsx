@@ -10,14 +10,15 @@ export interface Course {
   description: string;
   price: number;
   bannerUrl: string;
-  tutor: Account;
-  enrollment: EnrolledCourse[];
-  lessons: Lesson[];
+  dateTimeOfCreation: Date;
   courseTags: Tag[];
+  tutor: Account;
   bannerPictureFileName: string;
   isEnrollmentActive: boolean;
+  isReviewRequested: boolean;
   courseRating: number;
   enrollmentLength: number;
+  enrollmentActive: boolean;
 }
 
 export interface UpdateCourseReq {

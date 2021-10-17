@@ -39,4 +39,27 @@ export const ForumButton = styled(ForumIcon)`
     margin-right: 8px;
 `
 
+export const BlankStateContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    text-align: center; 
+    align-items: center;
+    width: 100%;
+    color: ${colours.GRAY4};
+    
+    > * {
+        margin: 0 0 1rem 0;
+    }
+    
+`;
+
+export const MessageContainer = styled.div`
+  display: flex;
+  margin: 150px;
+  padding: 150px;
+  align-items: center;
+  justify-content: center;
+`
+
 

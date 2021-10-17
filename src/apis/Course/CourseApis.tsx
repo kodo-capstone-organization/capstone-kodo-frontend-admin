@@ -11,6 +11,14 @@ export async function getAllCourses(): Promise<Course[]> {
     return httpClient.get<undefined, Course[]>(getParameters)
 }
 
+export async function getPendingCourses(): Promise<Course[]> {
+    const getParameters: IHttpClientRequestParameters<undefined> = {
+        url: '/course/getPendingCourses'
+    }
+
+    return httpClient.get<undefined, Course[]>(getParameters)
+}
+
 export async function getCourseByCourseId(courseId: number): Promise<Course> {
     const getParameters: IHttpClientRequestParameters<undefined> = {
         url: `/course/getCourseByCourseId/${courseId}`
@@ -41,6 +49,14 @@ export async function getCourseByTagTitle(tagTitle: string): Promise<Course[]> {
     }
 
     return httpClient.get<undefined, Course[]>(getParameters)
+}
+
+export async function toggleReviewRequestStatus(courseId: number, requestingAccountId: number): Promise<ToggleCourseResp> {
+    const deleteParameters: IHttpClientRequestParameters<undefined> = {
+        url: `/course/toggleReviewRequestStatus/${courseId}&${requestingAccountId}`
+    }
+
+    return httpClient.delete<undefined, ToggleCourseResp>(deleteParameters);
 }
 
 export async function updateCourse(updateCourseReq: UpdateCourseReq, updatedBannerPicture: File): Promise<Course> {

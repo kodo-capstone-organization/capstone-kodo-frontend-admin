@@ -55,7 +55,7 @@ const TagEarningDetails = (props: any) => {
             <Featured>
             <FeaturedItem>
                 <FeaturedTitle>Total earnings</FeaturedTitle>
-                    <FeaturedSub>Total earnings of tutor</FeaturedSub>
+                    <FeaturedSub>Total earnings of tag</FeaturedSub>
                     <FeaturedMoneyContainer>
                         <FeaturedMoney>{tagEarnings?.lifetimeTagEarning}</FeaturedMoney>
                     </FeaturedMoneyContainer>

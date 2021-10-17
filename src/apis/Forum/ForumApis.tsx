@@ -73,7 +73,7 @@ export async function getAllForumPostsOfAForumThread(forumThreadId: number): Pro
         url: `/forumPost/getAllForumPostsOfAForumThread/${forumThreadId}`
     }
     return httpClient.get<undefined, ForumPost[]>(getParameters)
-}
+} 
 
 export async function getAllReportedForumPostsOfAForumThread(forumThreadId: number): Promise<ForumPost[]> {
     const getParameters: IHttpClientRequestParameters<undefined> = {

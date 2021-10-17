@@ -19,9 +19,9 @@ const columns: GridColDef[] = [
       width: 150,
     },
     {
-      field: 'published',
-      headerName: 'Published',
-      type: 'boolean',
+      field: 'status',
+      headerName: 'Status',
+      type: 'string',
       width: 200,
     },
     {
@@ -55,12 +55,22 @@ const CourseFinanceList = (props: any) => {
 
       console.log(courses)
 
+      const findStatus = (course: Course) => {
+        if (course.isEnrollmentActive && course.isEnrollmentActive) {
+          return "Approved"
+        } else if (course.isReviewRequested && !course.isEnrollmentActive) {
+          return "Pending Approval"
+        } else if (!course.isReviewRequested && !course.isEnrollmentActive) {
+          return "Rejected"
+        }
+      }
+
       var data = courses?.map((course) => {
         return {
             id: course.courseId,
             name: course.name,
             tutorName: course.tutor.name,
-            published: course.isEnrollmentActive,
+            status: findStatus(course),
             numEnrolled: course.enrollmentLength,
             courseRating: Math.round(course.courseRating),
         }
