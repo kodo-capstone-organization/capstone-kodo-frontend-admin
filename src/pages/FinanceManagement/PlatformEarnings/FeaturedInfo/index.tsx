@@ -39,7 +39,7 @@ const FeaturedInfo = (props: any) => {
     useEffect(() => {
         setPlatformEarnings(props.platformEarnings);
     }, [props.platformEarnings]);
-
+    console.log(platformEarnings);
     const openLifetimeCourseDialog = () => {
         setOpenLCDialog(true);
         console.log("course dialog")
@@ -145,9 +145,11 @@ const FeaturedInfo = (props: any) => {
                 <FeaturedSub>{getCurrentMonth()}</FeaturedSub>
                 <FeaturedMoneyContainer>
                     <FeaturedMoney>{platformEarnings?.currentMonthPlatformEarnings}</FeaturedMoney>
+                    {platformEarnings &&
                     <FeaturedMoneyRate>
-                        {platformEarnings?.increaseInMonthlyProfit ? <FeaturedIconUpward /> : <FeaturedIconDownward />}
+                        {platformEarnings?.currentMonthPlatformEarnings >= platformEarnings?.lastMonthPlatformEarnings ? <FeaturedIconUpward /> : <FeaturedIconDownward />}
                     </FeaturedMoneyRate>
+                    }
                 </FeaturedMoneyContainer>
             </FeaturedItem>
         </Featured>

@@ -25,8 +25,6 @@ function PlatformEarnings() {
         }
     }, [])    
 
-    console.log(platformEarnings)
-
     return (
         loading ? <MessageContainer><CircularProgress style={{'color': '#323940'}}/></MessageContainer> :
         <InsightContainer>

@@ -190,8 +190,8 @@ const ForumCategoryView = (props: any) => {
                         open={Boolean(anchorElChron)}
                         onClose={handleCloseChron}
                     >
-                        <MenuItem onClick={sortOldestFirst}>Old to New</MenuItem>
-                        <MenuItem onClick={sortNewestFirst}>New to Old</MenuItem>
+                        <MenuItem onClick={sortNewestFirst}>Old to New</MenuItem>
+                        <MenuItem onClick={sortOldestFirst}>New to Old</MenuItem>
                     </Menu>
                 </SortIconWrapper>
             </HeadingWrapper>

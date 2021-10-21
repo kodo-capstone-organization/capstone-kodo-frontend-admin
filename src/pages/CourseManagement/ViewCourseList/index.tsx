@@ -56,12 +56,12 @@ function ViewCourseList(props: any) {
       console.log(courses)
 
       const findStatus = (course: Course) => {
-        if (course.isEnrollmentActive && course.isEnrollmentActive) {
+        if (course.isReviewRequested && course.isEnrollmentActive) {
           return "Approved"
         } else if (course.isReviewRequested && !course.isEnrollmentActive) {
           return "Pending Approval"
         } else if (!course.isReviewRequested && !course.isEnrollmentActive) {
-          return "Rejected"
+          return "Review not requested"
         }
       }
 

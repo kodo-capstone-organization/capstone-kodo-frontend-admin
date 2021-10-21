@@ -100,9 +100,6 @@ function ForumThreadView(props: any) {
                 )
             })
             }
-            <PaginationContainer>
-                <Pagination count={10} variant="outlined" />
-            </PaginationContainer>
             </PostListWrapper>
             }
         </ForumPageContainer>
