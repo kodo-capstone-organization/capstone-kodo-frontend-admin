@@ -10,3 +10,7 @@ export interface ForumPost {
     parentForumPost : (ForumPost | null),
     account: Account
 }
+
+export interface ToggleForumPostResp {
+    responseBody: string
+  }

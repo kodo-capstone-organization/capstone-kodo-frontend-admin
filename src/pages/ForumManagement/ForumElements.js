@@ -266,7 +266,7 @@ export const PostWrapper = styled.div`
 
 export const ProfileContainer = styled.div`
     display: grid;
-    grid-template-columns: 40px 200px 100px;
+    grid-template-columns: 40px 200px 100px 100px;
     grid-gap: 20px;
 `
 

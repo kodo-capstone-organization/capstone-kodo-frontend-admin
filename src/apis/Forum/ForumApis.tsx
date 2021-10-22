@@ -2,7 +2,7 @@ import { IHttpClientRequestParameters } from "../HttpClient/IHttpClientRequestPa
 import { httpClient } from "../HttpClient/HttpClient";
 import { ForumCategory } from "../Entities/ForumCategory";
 import { ForumThread } from "../Entities/ForumThread";
-import { ForumPost } from "../Entities/ForumPost";
+import { ForumPost, ToggleForumPostResp } from "../Entities/ForumPost";
 
 // FORUM CATEGORY //
 
@@ -88,4 +88,12 @@ export async function deleteForumPost(forumPostId: number): Promise<boolean> {
     }
 
     return httpClient.delete<undefined, boolean>(deleteParameters);
+}
+
+export async function toggleReport(forumPostId: number, requestingAccountId: number): Promise<ToggleForumPostResp> {
+    const deleteParameters: IHttpClientRequestParameters<undefined> = {
+        url: `/forumPost/toggleReport/${forumPostId}&${requestingAccountId}`
+    }
+
+    return httpClient.delete<undefined, ToggleForumPostResp>(deleteParameters);
 }

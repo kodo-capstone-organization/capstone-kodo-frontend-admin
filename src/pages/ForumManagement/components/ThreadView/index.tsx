@@ -28,13 +28,14 @@ import {
 } from '@material-ui/lab';
 
 
-import { ForumPost } from '../../../../apis/Entities/ForumPost';
+import { ForumPost, ToggleForumPostResp } from '../../../../apis/Entities/ForumPost';
 import { ForumThread } from '../../../../apis/Entities/ForumThread';
 
 import { 
     getAllReportedForumPostsOfAForumThread,
     getForumThreadByForumThreadId,
-    deleteForumPost
+    deleteForumPost,
+    toggleReport,
 } from "../../../../apis/Forum/ForumApis";
 
 function ForumThreadView(props: any) {
@@ -44,7 +45,6 @@ function ForumThreadView(props: any) {
     const [forumPosts, setForumPosts] = useState<ForumPost[]>();
     const [forumThread, setForumThread] = useState<ForumThread>();
     const [loading, setLoading] = useState<boolean>(true);
-    const [pageNumber, setPageNumber] = useState<number>(1);
 
     useEffect(() => {
         setLoading(true);
@@ -58,18 +58,31 @@ function ForumThreadView(props: any) {
     }, [props, courseId, categoryId, threadId])
     console.log(forumPosts);
 
-    function changePage(offset: number) {
-        setPageNumber(prevPageNumber => prevPageNumber + offset);
-    }
-
     const deletePost = (postId: number) => {
+        console.log("delete entered")
         deleteForumPost(postId)
             .then((res) => {
+                console.log("Delete Response:", res)
                 props.callOpenSnackBar("Post successfully deleted", "success")
             })
             .catch((err) => {
                 props.callOpenSnackBar(`Error in deleting post: ${err}`, "error")
             })
+    }
+
+    const togglePostReport = (postId: number) => {
+        console.log("toggle entered");
+        const myAccountId = window.sessionStorage.getItem("loggedInAccountId");
+        if(myAccountId != null) {
+            toggleReport(postId, parseInt(myAccountId))
+                .then((res: any) => {
+                    console.log("Toggle Response:",res);
+                    props.callOpenSnackBar("Post successfully updated", "success")
+                })
+                .catch((err) => {
+                    props.callOpenSnackBar(`Error in updating post: ${err}`, "error")
+                })
+        }
     }
 
     return (
@@ -87,6 +100,7 @@ function ForumThreadView(props: any) {
                                 <PostAccountImg src={p.account.displayPictureUrl}></PostAccountImg>
                                 <PostAccountName>{p.account.name}</PostAccountName>
                                 <Button variant="outlined"  onClick={() => deletePost(p.forumPostId)} color="secondary">Delete</Button>
+                                <Button variant="outlined"  onClick={() => togglePostReport(p.forumPostId)} color="primary">Reject</Button>
                             </ProfileContainer>
                             <PostMessage>{p.message}</PostMessage>
                             <br />
