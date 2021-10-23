@@ -21,7 +21,8 @@ import {
 
 import {
     CircularProgress,
-    Button
+    Button,
+    Tooltip,
 } from '@material-ui/core';
 import {
     Pagination
@@ -99,8 +100,12 @@ function ForumThreadView(props: any) {
                             <ProfileContainer>
                                 <PostAccountImg src={p.account.displayPictureUrl}></PostAccountImg>
                                 <PostAccountName>{p.account.name}</PostAccountName>
-                                <Button variant="outlined"  onClick={() => deletePost(p.forumPostId)} color="secondary">Delete</Button>
-                                <Button variant="outlined"  onClick={() => togglePostReport(p.forumPostId)} color="primary">Reject</Button>
+                                <Tooltip title="Pressing this will delete this post.">
+                                    <Button variant="outlined"  onClick={() => deletePost(p.forumPostId)} color="secondary">Accept Report</Button>
+                                </Tooltip>
+                                <Tooltip title="Pressing this will reject this report and restore the post.">
+                                    <Button variant="outlined"  onClick={() => togglePostReport(p.forumPostId)} color="primary">Reject Report</Button>
+                                </Tooltip>
                             </ProfileContainer>
                             <PostMessage>{p.message}</PostMessage>
                             <br />
