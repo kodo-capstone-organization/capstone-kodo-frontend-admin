@@ -48,7 +48,7 @@ export interface PlatformEarningsResp {
     currentMonthNumberOfCourseCreation: number;
     increaseInMonthlyCourseCreation: boolean;
     transactionWithParticularsResps: TransactionWithParticularsResp[];
-    increaseInMonthlyProfit: number;
+    increaseInMonthlyProfit: boolean;
 }
 
 export interface TransactionWithParticularsResp {
