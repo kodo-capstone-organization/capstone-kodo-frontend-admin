@@ -74,7 +74,7 @@ const ForumPage = (props: any) => {
             <WidgetLgTable>
                 <WidgetLgTr>
                     <WidgetLgTh>Category</WidgetLgTh>
-                    <WidgetLgTh>Replies</WidgetLgTh>
+                    <WidgetLgTh>Threads</WidgetLgTh>
                     <WidgetLgTh>Delete</WidgetLgTh>
                 </WidgetLgTr>
                 {forumCategories && forumCategories.map(c => {
