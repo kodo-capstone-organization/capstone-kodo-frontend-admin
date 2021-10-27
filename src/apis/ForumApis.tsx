@@ -1,8 +1,8 @@
-import { IHttpClientRequestParameters } from "../HttpClient/IHttpClientRequestParameters";
-import { httpClient } from "../HttpClient/HttpClient";
-import { ForumCategory } from "../Entities/ForumCategory";
-import { ForumThread } from "../Entities/ForumThread";
-import { ForumPost, ToggleForumPostResp } from "../Entities/ForumPost";
+import { IHttpClientRequestParameters } from "./HttpClientApis/IHttpClientRequestParameters";
+import { httpClient } from "./HttpClientApis/HttpClient";
+import { ForumCategory } from "../entities/ForumCategory";
+import { ForumThread } from "../entities/ForumThread";
+import { ForumPost, ToggleForumPostResp } from "../entities/ForumPost";
 
 // FORUM CATEGORY //
 

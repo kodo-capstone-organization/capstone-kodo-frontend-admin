@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { withRouter, useHistory } from 'react-router-dom';
 
-import { CourseBasicResp } from '../../apis/Entities/Course'
-import { ForumCategory } from '../../apis/Entities/ForumCategory'
-import { getAllForumCategoriesWithForumThreadsOnlyByCourseId as getAllForumCategoriesByCourseId, deleteForumCategory } from "../../apis/Forum/ForumApis";
-import { getBasicCourseByCourseId } from '../../apis/Course/CourseApis';
+import { CourseBasicResp } from '../../entities/Course'
+import { ForumCategory } from '../../entities/ForumCategory'
+import { getAllForumCategoriesWithForumThreadsOnlyByCourseId as getAllForumCategoriesByCourseId, deleteForumCategory } from "../../apis/ForumApis";
+import { getBasicCourseByCourseId } from '../../apis/CourseApis';
 
 import { 
     ForumPageContainer, 

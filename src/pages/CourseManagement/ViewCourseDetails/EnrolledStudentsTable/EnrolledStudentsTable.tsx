@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { Course } from "../../../../apis/Entities/Course";
-import { EnrolledCourseWithStudentCompletion } from "../../../../apis/Entities/EnrolledCourse"
-import { getAllCourses, getCourseByCourseId } from "../../../../apis/Course/CourseApis"
-import { getEnrolledCoursesWithStudents } from "../../../../apis/EnrolledCourse/EnrolledCourseApis";
+import { Course } from "../../../../entities/Course";
+import { EnrolledCourseWithStudentCompletion } from "../../../../entities/EnrolledCourse"
+import { getAllCourses, getCourseByCourseId } from "../../../../apis/CourseApis"
+import { getEnrolledCoursesWithStudents } from "../../../../apis/EnrolledCourseApis";
 import { CourseListContainer, HeadingWrapper, DataGridContainer, BtnWrapper } from "./EnrolledStudentsElements";
 import { Button } from "../../../../values/ButtonElements";
 

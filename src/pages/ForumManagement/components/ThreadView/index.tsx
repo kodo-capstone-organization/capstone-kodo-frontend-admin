@@ -29,15 +29,15 @@ import {
 } from '@material-ui/lab';
 
 
-import { ForumPost, ToggleForumPostResp } from '../../../../apis/Entities/ForumPost';
-import { ForumThread } from '../../../../apis/Entities/ForumThread';
+import { ForumPost, ToggleForumPostResp } from '../../../../entities/ForumPost';
+import { ForumThread } from '../../../../entities/ForumThread';
 
 import { 
     getAllReportedForumPostsOfAForumThread,
     getForumThreadByForumThreadId,
     deleteForumPost,
     toggleReport,
-} from "../../../../apis/Forum/ForumApis";
+} from "../../../../apis/ForumApis";
 
 function ForumThreadView(props: any) {
     const courseId = parseInt(props.match.params.courseId);

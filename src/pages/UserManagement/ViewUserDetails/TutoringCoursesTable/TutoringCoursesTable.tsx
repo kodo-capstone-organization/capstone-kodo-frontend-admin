@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { TutoringCoursesContainer, HeadingWrapper, DataGridContainer, } from "./TutoringCoursesElements";
 
 import { DataGrid, GridToolbar, GridColDef, GridValueGetterParams, GridSelectionModel } from '@mui/x-data-grid';
-import { Account } from '../../../../apis/Entities/Account';
-import { getAccountByAccountId } from '../../../../apis/Account/AccountApis';
+import { Account } from '../../../../entities/Account';
+import { getAccountByAccountId } from '../../../../apis/AccountApis';
 
 const columns: GridColDef[] = [
   {

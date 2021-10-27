@@ -1,6 +1,6 @@
 import Typography from "@material-ui/core/Typography";
 import { useState, useEffect } from "react";
-import { Course } from "../../../apis/Entities/Course";
+import { Course } from "../../../entities/Course";
 
 import { CourseListContainer, BlankStateContainer, HeadingWrapper } from "../ViewCourseList/ViewCoursesElements"
 import ViewCourseList from "../ViewCourseList";

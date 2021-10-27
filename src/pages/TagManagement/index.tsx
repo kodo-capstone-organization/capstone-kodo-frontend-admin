@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useReducer } from 'react'
 import { TagListContainer, HeadingWrapper, DataGridContainer, BtnWrapper, DeleteButton } from './TagManagementElements'
-import { Tag, TagWithAccountsCountAndCoursesCount } from "../../apis/Entities/Tag";
-import { getTagCounts, deleteTagByTagId, getAllTags, createNewTags } from "../../apis/Tag/TagApis"
+import { Tag, TagWithAccountsCountAndCoursesCount } from "../../entities/Tag";
+import { getTagCounts, deleteTagByTagId, getAllTags, createNewTags } from "../../apis/TagApis"
 import { Button, ButtonNoLink } from "../../values/ButtonElements";
 import { useHistory } from "react-router-dom";
 

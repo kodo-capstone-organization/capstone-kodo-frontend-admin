@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { withRouter, useHistory } from 'react-router-dom';
-import { TutorEarningsResp } from "../../../../apis/Entities/Transaction"
-import { getTutorEarningsAdminData } from "../../../../apis/Transaction/TransactionApis"
+import { TutorEarningsResp } from "../../../../entities/Transaction"
+import { getTutorEarningsAdminData } from "../../../../apis/TransactionApis"
 import { UserEarningsContainer, HeadingWrapper, SubHeadingWrapper, Message, MessageContainer, UserWidgets } from "../UserEarningsElements"
 import { MONTHSFULL } from "../../../../values/DateTime";
 import CircularProgress from '@material-ui/core/CircularProgress';

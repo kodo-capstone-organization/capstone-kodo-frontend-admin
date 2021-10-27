@@ -1,9 +1,9 @@
-import { IHttpClientRequestParameters } from "./../HttpClient/IHttpClientRequestParameters";
-import { LoginResponse } from "../Entities/Login";
-import { Account, CreateNewAccountReq, UpdateAccountReq, UpdateAccountPasswordReq } from "../Entities/Account";
-import { DeactivateAccountResponse } from "../Entities/Deactivate";
-import { httpClient } from "../HttpClient/HttpClient";
-import { transformToBlob } from "../../utils/BlobCreator";
+import { IHttpClientRequestParameters } from "./HttpClientApis/IHttpClientRequestParameters";
+import { LoginResponse } from "../entities/Login";
+import { Account, CreateNewAccountReq, UpdateAccountReq, UpdateAccountPasswordReq } from "../entities/Account";
+import { DeactivateAccountResponse } from "../entities/Deactivate";
+import { httpClient } from "./HttpClientApis/HttpClient";
+import { transformToBlob } from "../utils/BlobCreator";
 const FormData = require('form-data');
 
 export async function getMyAccount(accountId: number): Promise<Account> {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { TransactionWithParticularsResp } from "../../../../apis/Entities/Transaction";
+import { TransactionWithParticularsResp } from "../../../../entities/Transaction";
 import { 
     WidgetLg, 
     WidgetLgAmount, 

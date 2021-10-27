@@ -1,8 +1,8 @@
-import { IHttpClientRequestParameters } from "./../HttpClient/IHttpClientRequestParameters";
-import { httpClient } from "../HttpClient/HttpClient";
-import { Tag, TagWithAccountsCountAndCoursesCount } from "../Entities/Tag";
-import { transformToBlob } from "./../../utils/BlobCreator";
-import { CreateNewTagsReq } from "../Entities/Tag";
+import { IHttpClientRequestParameters } from "./HttpClientApis/IHttpClientRequestParameters";
+import { httpClient } from "./HttpClientApis/HttpClient";
+import { Tag, TagWithAccountsCountAndCoursesCount } from "../entities/Tag";
+import { transformToBlob } from "../utils/BlobCreator";
+import { CreateNewTagsReq } from "../entities/Tag";
 const FormData = require('form-data');
 
 export async function getAllTags(): Promise<Tag[]> {

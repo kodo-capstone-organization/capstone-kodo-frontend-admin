@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { Course } from "../../../apis/Entities/Course";
-import { getAllCourses } from "../../../apis/Course/CourseApis"
+import { Course } from "../../../entities/Course";
+import { getAllCourses } from "../../../apis/CourseApis"
 import { CourseListContainer, HeadingWrapper, DataGridContainer, BtnWrapper, ForumButton } from "./ViewCoursesElements";
 import { Button } from "../../../values/ButtonElements";
 

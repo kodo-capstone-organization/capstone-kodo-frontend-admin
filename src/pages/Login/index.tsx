@@ -1,6 +1,6 @@
 // import { Button } from "../../values/ButtonElements";
 import Alert from '@material-ui/lab/Alert';
-import { adminLogin as loginApi } from '../../apis/Account/AccountApis';
+import { adminLogin as loginApi } from '../../apis/AccountApis';
 import { useHistory } from "react-router-dom";
 import { useState } from 'react';
 import { Button } from '../../values/ButtonElements';

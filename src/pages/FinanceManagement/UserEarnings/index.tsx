@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { Account } from "../../../apis/Entities/Account"
-import { TutorAndEarningsResp } from '../../../apis/Entities/Transaction'
-import { getAllTutors } from "../../../apis/Account/AccountApis"
-import { getAllTutorsWithEarnings } from "../../../apis/Transaction/TransactionApis"
+import { Account } from "../../../entities/Account"
+import { TutorAndEarningsResp } from '../../../entities/Transaction'
+import { getAllTutors } from "../../../apis/AccountApis"
+import { getAllTutorsWithEarnings } from "../../../apis/TransactionApis"
 import { UserEarningsContainer, HeadingWrapper, SubHeadingWrapper, DataGridContainer, BtnWrapper, MessageContainer, } from "./UserEarningsElements"
 import { Button } from "../../../values/ButtonElements";
 

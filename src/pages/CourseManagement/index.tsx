@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
-import { Course } from "../../apis/Entities/Course";
-import { getAllCourses, getPendingCourses } from '../../apis/Course/CourseApis';
+import { Course } from "../../entities/Course";
+import { getAllCourses, getPendingCourses } from '../../apis/CourseApis';
 import CourseManagementTabPanel from './components/CourseManagementTabPanel'
 import Paper from '@material-ui/core/Paper';
 import { HeadingWrapper, MessageContainer, CourseListContainer } from './ViewCourseList/ViewCoursesElements';

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { Account } from "../../apis/Entities/Account";
-import { getMyAccount } from "../../apis/Account/AccountApis";
+import { Account } from "../../entities/Account";
+import { getMyAccount } from "../../apis/AccountApis";
 
 function HomePage() {
 

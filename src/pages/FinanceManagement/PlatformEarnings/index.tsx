@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { PlatformEarningsResp } from "../../../apis/Entities/Transaction";
-import { getPlatformEarningsAdminData } from "../../../apis/Transaction/TransactionApis"
+import { PlatformEarningsResp } from "../../../entities/Transaction";
+import { getPlatformEarningsAdminData } from "../../../apis/TransactionApis"
 import  { InsightContainer, HeadingWrapper, SubHeadingWrapper, MessageContainer } from "./PlatformEarningsElements"
 import FeaturedInfo from "./FeaturedInfo";
 import PlatformEarningsChart from './PlatformChart';

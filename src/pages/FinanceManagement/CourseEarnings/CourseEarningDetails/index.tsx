@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react'
 import { withRouter, useHistory } from 'react-router-dom';
-import { CourseEarningsResp } from "../../../../apis/Entities/Transaction";
-import { Course } from "../../../../apis/Entities/Course";
-import { getCourseEarningsAdminData } from "../../../../apis/Transaction/TransactionApis";
-import { getCourseByCourseId } from "../../../../apis/Course/CourseApis"
+import { CourseEarningsResp } from "../../../../entities/Transaction";
+import { Course } from "../../../../entities/Course";
+import { getCourseEarningsAdminData } from "../../../../apis/TransactionApis";
+import { getCourseByCourseId } from "../../../../apis/CourseApis"
 import { CourseEarningsContainer, HeadingWrapper, SubHeadingWrapper, Message, MessageContainer, CourseWidgets } from "../CourseEarningsElements"
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { MONTHSFULL } from "../../../../values/DateTime";

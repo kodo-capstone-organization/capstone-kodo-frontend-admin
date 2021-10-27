@@ -1,7 +1,7 @@
-import { IHttpClientRequestParameters } from "./../HttpClient/IHttpClientRequestParameters";
-import { Course, UpdateCourseReq, ToggleCourseResp, CourseBasicResp } from "../Entities/Course";
-import { httpClient } from "../HttpClient/HttpClient";
-import { transformToBlob } from "../../utils/BlobCreator";
+import { IHttpClientRequestParameters } from "./HttpClientApis/IHttpClientRequestParameters";
+import { Course, UpdateCourseReq, ToggleCourseResp, CourseBasicResp } from "../entities/Course";
+import { httpClient } from "./HttpClientApis/HttpClient";
+import { transformToBlob } from "../utils/BlobCreator";
 
 export async function getAllCourses(): Promise<Course[]> {
     const getParameters: IHttpClientRequestParameters<undefined> = {

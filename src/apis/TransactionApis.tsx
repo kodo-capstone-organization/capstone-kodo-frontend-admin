@@ -1,6 +1,6 @@
-import { Transaction, TutorCourseEarningsResp, PlatformEarningsResp, CourseEarningsResp, TutorEarningsResp, TagEarningsResp, TutorAndEarningsResp } from "../Entities/Transaction"
-import { IHttpClientRequestParameters } from "../HttpClient/IHttpClientRequestParameters"
-import { httpClient } from "../HttpClient/HttpClient";
+import { Transaction, TutorCourseEarningsResp, PlatformEarningsResp, CourseEarningsResp, TutorEarningsResp, TagEarningsResp, TutorAndEarningsResp } from "../entities/Transaction"
+import { IHttpClientRequestParameters } from "./HttpClientApis/IHttpClientRequestParameters"
+import { httpClient } from "./HttpClientApis/HttpClient";
 
 export async function getAllPlatformTransactions(accountId: number): Promise<Transaction[]> {
     const getParameters: IHttpClientRequestParameters<undefined> = {

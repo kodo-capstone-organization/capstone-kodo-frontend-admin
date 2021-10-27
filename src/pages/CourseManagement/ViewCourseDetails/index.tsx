@@ -1,11 +1,11 @@
 import { useState, useEffect, useReducer } from 'react'
 import { withRouter, useHistory } from 'react-router-dom';
-import { getCourseByCourseId, toggleEnrollmentActiveStatus, updateCourse } from './../../../apis/Course/CourseApis';
-import { Tag } from "../../../apis/Entities/Tag";
-import { UpdateCourseReq, Course } from "../../../apis/Entities/Course";
-import { Lesson } from "../../../apis/Entities/Lesson";
-import { Multimedia } from "../../../apis/Entities/Multimedia"
-import { getAllTags } from '../../../apis/Tag/TagApis';
+import { getCourseByCourseId, toggleEnrollmentActiveStatus, updateCourse } from '../../../apis/CourseApis';
+import { Tag } from "../../../entities/Tag";
+import { UpdateCourseReq, Course } from "../../../entities/Course";
+import { Lesson } from "../../../entities/Lesson";
+import { Multimedia } from "../../../entities/Multimedia"
+import { getAllTags } from '../../../apis/TagApis';
 import { Button, ButtonNoLink } from "../../../values/ButtonElements";
 import { Button as DeleteButton } from '@material-ui/core';
 import Rating from '@material-ui/lab/Rating';

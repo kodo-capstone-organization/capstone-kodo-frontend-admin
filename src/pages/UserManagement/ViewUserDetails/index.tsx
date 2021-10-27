@@ -1,7 +1,7 @@
 import { useState, useEffect, useReducer } from 'react'
 import { withRouter, useHistory } from 'react-router-dom';
-import { getAccountByAccountId, deactivateAccount, reactivateAccount, upgradeAccount, downgradeAccount } from './../../../apis/Account/AccountApis';
-import { Account } from "../../../apis/Entities/Account";
+import { getAccountByAccountId, deactivateAccount, reactivateAccount, upgradeAccount, downgradeAccount } from '../../../apis/AccountApis';
+import { Account } from "../../../entities/Account";
 import { Button, ButtonNoLink } from "../../../values/ButtonElements";
 
 import { UserDetailsContainer, HeadingWrapper, DetailsCard, DetailsWrapper, CardTitle, CardDescription, RowTitle, ChipWrapper, BtnWrapper } from "./ViewUserDetailsElements"

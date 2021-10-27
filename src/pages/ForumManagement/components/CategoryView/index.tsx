@@ -21,20 +21,20 @@ import {
     SortOldNew,
     SortIconWrapper,
 } from "../../ForumElements"
-import { CourseBasicResp } from '../../../../apis/Entities/Course';
-import { ForumCategory } from '../../../../apis/Entities/ForumCategory';
-import { ForumThread } from '../../../../apis/Entities/ForumThread';
+import { CourseBasicResp } from '../../../../entities/Course';
+import { ForumCategory } from '../../../../entities/ForumCategory';
+import { ForumThread } from '../../../../entities/ForumThread';
 
 import { 
     getForumCategoryWithForumThreadsOnlyByForumCategoryId as getForumCategoryByForumCategoryId, 
     getAllForumThreadsByForumCategoryId,
     deleteForumThread, 
-} from "../../../../apis/Forum/ForumApis";
+} from "../../../../apis/ForumApis";
 
 import 
 {
     getBasicCourseByCourseId
-} from "../../../../apis/Course/CourseApis"
+} from "../../../../apis/CourseApis"
 
 import {
     CircularProgress,

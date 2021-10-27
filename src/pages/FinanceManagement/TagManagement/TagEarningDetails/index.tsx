@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { withRouter, useHistory } from 'react-router-dom';
-import { TagEarningsResp } from "../../../../apis/Entities/Transaction"
-import { getTagEarningsAdminData } from "../../../../apis/Transaction/TransactionApis"
+import { TagEarningsResp } from "../../../../entities/Transaction"
+import { getTagEarningsAdminData } from "../../../../apis/TransactionApis"
 import { MONTHSFULL } from "../../../../values/DateTime";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { UserEarningsContainer, HeadingWrapper, SubHeadingWrapper, Message, MessageContainer, UserWidgets, TagChip } from "../../UserEarnings/UserEarningsElements"

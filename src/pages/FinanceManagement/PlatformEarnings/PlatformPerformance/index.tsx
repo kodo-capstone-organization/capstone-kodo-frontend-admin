@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { PlatformEarningsResp } from "../../../../apis/Entities/Transaction";
+import { PlatformEarningsResp } from "../../../../entities/Transaction";
 import { MONTHSFULL } from "../../../../values/DateTime";
 import { 
     Featured, 

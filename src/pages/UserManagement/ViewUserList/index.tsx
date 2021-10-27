@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router';
-import { getAllAccountsWithoutEnrollment, createNewAccount } from "../../../apis/Account/AccountApis";
-import { getAllTags} from "../../../apis/Tag/TagApis";
+import { getAllAccountsWithoutEnrollment, createNewAccount } from "../../../apis/AccountApis";
+import { getAllTags} from "../../../apis/TagApis";
 
-import { Account } from "../../../apis/Entities/Account";
-import { Tag } from "../../../apis/Entities/Tag";
+import { Account } from "../../../entities/Account";
+import { Tag } from "../../../entities/Tag";
 
 import { UserListContainer, HeadingWrapper, DataGridContainer, BtnWrapper } from "./ViewUserElements";
 import { Button, ButtonNoLink } from "../../../values/ButtonElements";

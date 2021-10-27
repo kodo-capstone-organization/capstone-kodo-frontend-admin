@@ -1,6 +1,6 @@
-import { IHttpClientRequestParameters } from "../HttpClient/IHttpClientRequestParameters";
-import { httpClient } from "../HttpClient/HttpClient";
-import { EnrolledCourse, EnrolledCourseWithStudentResp, EnrolledCourseWithStudentCompletion } from "../Entities/EnrolledCourse";
+import { IHttpClientRequestParameters } from "./HttpClientApis/IHttpClientRequestParameters";
+import { httpClient } from "./HttpClientApis/HttpClient";
+import { EnrolledCourse, EnrolledCourseWithStudentResp, EnrolledCourseWithStudentCompletion } from "../entities/EnrolledCourse";
 
 export async function getEnrolledCourseByStudentIdAndCourseId(studentId: number, courseId: number): Promise<EnrolledCourse> {
     const getParameters: IHttpClientRequestParameters<undefined> = {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { TagListContainer, HeadingWrapper, DataGridContainer, BtnWrapper } from '../../TagManagement/TagManagementElements'
-import { TagWithAccountsCountAndCoursesCount } from "../../../apis/Entities/Tag";
-import { getTagCounts } from "../../../apis/Tag/TagApis"
+import { TagWithAccountsCountAndCoursesCount } from "../../../entities/Tag";
+import { getTagCounts } from "../../../apis/TagApis"
 import { Button } from "../../../values/ButtonElements"
 import { DataGrid, GridToolbar, GridColDef, GridValueGetterParams, GridSelectionModel  } from '@mui/x-data-grid';
 
