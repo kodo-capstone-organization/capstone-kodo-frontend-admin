@@ -1,7 +1,7 @@
 import { IHttpClientRequestParameters } from "./HttpClientApis/IHttpClientRequestParameters";
 import { httpClient } from "./HttpClientApis/HttpClient";
 import { Tag, TagWithAccountsCountAndCoursesCount } from "../entities/Tag";
-import { transformToBlob } from "../utils/BlobCreator";
+import { transformToBlob } from "../utils/BlobCreatorHelper";
 import { CreateNewTagsReq } from "../entities/Tag";
 const FormData = require('form-data');
 

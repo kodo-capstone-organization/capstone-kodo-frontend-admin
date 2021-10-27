@@ -3,7 +3,7 @@ import { LoginResponse } from "../entities/Login";
 import { Account, CreateNewAccountReq, UpdateAccountReq, UpdateAccountPasswordReq } from "../entities/Account";
 import { DeactivateAccountResponse } from "../entities/Deactivate";
 import { httpClient } from "./HttpClientApis/HttpClient";
-import { transformToBlob } from "../utils/BlobCreator";
+import { transformToBlob } from "../utils/BlobCreatorHelper";
 const FormData = require('form-data');
 
 export async function getMyAccount(accountId: number): Promise<Account> {
