@@ -2,22 +2,22 @@ import React, { useState } from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Layout from "./components/Layout";
 import HomePage from "./pages/HomePage";
-import Login from "./pages/Login";
-import TagManagement from "./pages/TagManagement";
-import CourseManagement from "./pages/CourseManagement"
-import ViewUserList from "./pages/UserManagement/ViewUserList";
-import ViewUserDetails from "./pages/UserManagement/ViewUserDetails";
-import ViewCourseDetails from "./pages/CourseManagement/ViewCourseDetails";
-import PlatformEarnings from "./pages/FinanceManagement/PlatformEarnings";
-import CourseFinanceList from "./pages/FinanceManagement/CourseEarnings";
-import CourseEarningDetails from "./pages/FinanceManagement/CourseEarnings/CourseEarningDetails";
-import UserEarnings from "./pages/FinanceManagement/UserEarnings";
-import UserEarningsDetails from "./pages/FinanceManagement/UserEarnings/UserEarningsDetails";
-import TagEarnings from "./pages/FinanceManagement/TagManagement";
-import TagEarningDetails from "./pages/FinanceManagement/TagManagement/TagEarningDetails";
-import ForumPage from "./pages/ForumManagement";
-import ForumCategoryView from "./pages/ForumManagement/components/CategoryView";
-import ForumThreadView from "./pages/ForumManagement/components/ThreadView";
+import Login from "./pages/LoginPage";
+import TagManagement from "./pages/TagManagementPage";
+import CourseManagement from "./pages/CourseManagementPage"
+import ViewUserList from "./pages/UserManagementPage/ViewUserList";
+import ViewUserDetails from "./pages/UserManagementPage/ViewUserDetails";
+import ViewCourseDetails from "./pages/CourseManagementPage/ViewCourseDetails";
+import PlatformEarnings from "./pages/FinanceManagementPage/PlatformEarnings";
+import CourseFinanceList from "./pages/FinanceManagementPage/CourseEarnings";
+import CourseEarningDetails from "./pages/FinanceManagementPage/CourseEarnings/CourseEarningDetails";
+import UserEarnings from "./pages/FinanceManagementPage/UserEarnings";
+import UserEarningsDetails from "./pages/FinanceManagementPage/UserEarnings/UserEarningsDetails";
+import TagEarnings from "./pages/FinanceManagementPage/TagManagement";
+import TagEarningDetails from "./pages/FinanceManagementPage/TagManagement/TagEarningDetails";
+import ForumPage from "./pages/ForumManagementPage";
+import ForumCategoryView from "./pages/ForumManagementPage/components/CategoryView";
+import ForumThreadView from "./pages/ForumManagementPage/components/ThreadView";
 import NotFound from "./pages/NotFound";
 
 

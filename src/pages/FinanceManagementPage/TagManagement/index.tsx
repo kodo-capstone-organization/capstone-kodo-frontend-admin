@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { TagListContainer, HeadingWrapper, DataGridContainer, BtnWrapper } from '../../TagManagement/TagManagementElements'
+import { TagListContainer, HeadingWrapper, DataGridContainer, BtnWrapper } from '../../TagManagementPage/TagManagementElements'
 import { TagWithAccountsCountAndCoursesCount } from "../../../entities/Tag";
 import { getTagCounts } from "../../../apis/TagApis"
 import { Button } from "../../../values/ButtonElements"
