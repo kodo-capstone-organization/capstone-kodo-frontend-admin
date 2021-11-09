@@ -87,7 +87,7 @@ const FeaturedInfo = (props: any) => {
                 <FeaturedTitle>Highest Earning Courses</FeaturedTitle>
                 <FeaturedSub>Lifetime</FeaturedSub>
                 <FeaturedMoneyContainer>
-                    <FeaturedMoney>{platformEarnings?.lifetimeHighestEarningCourses[0].name}</FeaturedMoney>
+                    <FeaturedMoney>{platformEarnings?.lifetimeHighestEarningCourses[0] ? platformEarnings?.lifetimeHighestEarningCourses[0]?.name : "Oh snap! No data yet."}</FeaturedMoney>
                 </FeaturedMoneyContainer>
             </FeaturedItem>
             <FeaturedItem onClick={openLifetimeTutorDialog}>
@@ -101,7 +101,7 @@ const FeaturedInfo = (props: any) => {
                 <FeaturedTitle>Highest Earning  Tutors</FeaturedTitle>
                 <FeaturedSub>Lifetime</FeaturedSub>
                 <FeaturedMoneyContainer>
-                    <FeaturedMoney>{platformEarnings?.lifetimeHighestEarningTutors[0].name}</FeaturedMoney>
+                    <FeaturedMoney>{platformEarnings?.lifetimeHighestEarningTutors[0] ? platformEarnings?.lifetimeHighestEarningTutors[0]?.name : "Oh snap! No data yet."}</FeaturedMoney>
                 </FeaturedMoneyContainer>
             </FeaturedItem>
             <FeaturedItem onClick={openMonthCourseDialog}>
@@ -115,7 +115,7 @@ const FeaturedInfo = (props: any) => {
                 <FeaturedTitle>Highest Earning Courses</FeaturedTitle>
                 <FeaturedSub>{getCurrentMonth()}</FeaturedSub>
                 <FeaturedMoneyContainer>
-                    <FeaturedMoney>{platformEarnings?.currentMonthHighestEarningCourses[0]?.name}</FeaturedMoney>
+                    <FeaturedMoney>{platformEarnings?.currentMonthHighestEarningCourses[0] ? platformEarnings?.currentMonthHighestEarningCourses[0]?.name : "Oh snap! No data yet."}</FeaturedMoney>
                 </FeaturedMoneyContainer>
             </FeaturedItem>
             <FeaturedItem onClick={openMonthTutorDialog}>
@@ -129,7 +129,7 @@ const FeaturedInfo = (props: any) => {
                 <FeaturedTitle>Highest Earning  Tutors</FeaturedTitle>
                 <FeaturedSub>{getCurrentMonth()}</FeaturedSub>
                 <FeaturedMoneyContainer>
-                    <FeaturedMoney>{platformEarnings?.currentMonthHighestEarningTutors[0]?.name}</FeaturedMoney>
+                    <FeaturedMoney>{platformEarnings?.currentMonthHighestEarningTutors[0] ? platformEarnings?.currentMonthHighestEarningTutors[0]?.name : "Oh snap! No data yet."}</FeaturedMoney>
                 </FeaturedMoneyContainer>      
             </FeaturedItem>
         </Featured>
