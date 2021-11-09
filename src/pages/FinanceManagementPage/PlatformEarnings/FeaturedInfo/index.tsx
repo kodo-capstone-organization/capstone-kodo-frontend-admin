@@ -115,7 +115,7 @@ const FeaturedInfo = (props: any) => {
                 <FeaturedTitle>Highest Earning Courses</FeaturedTitle>
                 <FeaturedSub>{getCurrentMonth()}</FeaturedSub>
                 <FeaturedMoneyContainer>
-                    <FeaturedMoney>{platformEarnings?.currentMonthHighestEarningCourses[0].name}</FeaturedMoney>
+                    <FeaturedMoney>{platformEarnings?.currentMonthHighestEarningCourses[0]?.name}</FeaturedMoney>
                 </FeaturedMoneyContainer>
             </FeaturedItem>
             <FeaturedItem onClick={openMonthTutorDialog}>
@@ -129,7 +129,7 @@ const FeaturedInfo = (props: any) => {
                 <FeaturedTitle>Highest Earning  Tutors</FeaturedTitle>
                 <FeaturedSub>{getCurrentMonth()}</FeaturedSub>
                 <FeaturedMoneyContainer>
-                    <FeaturedMoney>{platformEarnings?.currentMonthHighestEarningTutors[0].name}</FeaturedMoney>
+                    <FeaturedMoney>{platformEarnings?.currentMonthHighestEarningTutors[0]?.name}</FeaturedMoney>
                 </FeaturedMoneyContainer>      
             </FeaturedItem>
         </Featured>
