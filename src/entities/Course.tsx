@@ -13,6 +13,7 @@ export interface Course {
   dateTimeOfCreation: Date;
   courseTags: Tag[];
   tutor: Account;
+  tutorName: string;
   bannerPictureFileName: string;
   isEnrollmentActive: boolean;
   isReviewRequested: boolean;

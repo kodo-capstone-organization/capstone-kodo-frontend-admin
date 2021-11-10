@@ -69,7 +69,7 @@ const CourseFinanceList = (props: any) => {
         return {
             id: course.courseId,
             name: course.name,
-            tutorName: course.tutor.name,
+            tutorName: course.tutorName,
             status: findStatus(course),
             numEnrolled: course.enrollmentLength,
             courseRating: Math.round(course.courseRating),
